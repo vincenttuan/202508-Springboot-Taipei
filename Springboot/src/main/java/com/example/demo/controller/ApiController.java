@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.Date;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 // 了解各種不同 URL 與參數的傳遞與接收
@@ -33,8 +34,21 @@ public class ApiController {
 	 * 網址:http://localhost:8080/api/greet?name=Mary
 	 * 限制:name 參數是一定要有的
 	 *     age 參數是可選的(若沒有 age 參數則會有初始值 0)
+	 * 備註:required = true 預設(可以不用寫)
+	 *    若 @RequestParam 的 value = "name" 剛好等於 String name, 則 value = "name" 可以省略
+	 *    範例: 
+	 *    @RequestParam(value = "name", required = true) String name
+	 *    改成 
+	 *    @RequestParam(required = true) String name
+	 *    或
+	 *    @RequestParam String name
 	 * */
-	
+	@GetMapping("/greet")
+	public String greet(@RequestParam(value = "name", required = true) String name,
+						@RequestParam(value = "age", required = false, defaultValue = "0") Integer age) {
+		
+		return String.format("Hi %s, age:%d", name, age);
+	}
 	
 	
 	
