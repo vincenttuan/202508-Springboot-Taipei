@@ -25,6 +25,17 @@ public class ApiController {
 		return "Hello Spring " + new Date();
 	}
 	
+	/**
+	 * 2. ?帶參數
+	 * 路徑:/greet?name=John&age=18
+	 * 路徑:/greet?name=Mary
+	 * 網址:http://localhost:8080/api/greet?name=John&age=18
+	 * 網址:http://localhost:8080/api/greet?name=Mary
+	 * 限制:name 參數是一定要有的
+	 *     age 參數是可選的(若沒有 age 參數則會有初始值 0)
+	 * */
+	
+	
 	
 	
 }
