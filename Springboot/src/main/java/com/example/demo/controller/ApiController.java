@@ -171,8 +171,10 @@ public class ApiController {
 	 * */
 	@GetMapping("/fruit")
 	public String fruit(Fruit fruit) {
-		return String.format("name: %s price: %.1f amount: %d", 
-				fruit.getName(), fruit.getPrice(), fruit.getAmount());
+		//return String.format("name: %s price: %.1f amount: %d", 
+		//		fruit.getName(), fruit.getPrice(), fruit.getAmount());
+		// 回應 json 格式
+		
 	}
 	
 	
