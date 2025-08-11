@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.model.bean.Fruit;
+
 // 了解各種不同 URL 與參數的傳遞與接收
 @RestController
 @RequestMapping("/api")
@@ -167,7 +169,11 @@ public class ApiController {
 	 * 網址:http://localhost:8080/api/fruit?name=Banana&price=35.5&amount=20
 	 * 需要設計一個 Fruit 的物件
 	 * */
-	
+	@GetMapping("/fruit")
+	public String fruit(Fruit fruit) {
+		return String.format("name: %s price: %.1f amount: %d", 
+				fruit.getName(), fruit.getPrice(), fruit.getAmount());
+	}
 	
 	
 	
