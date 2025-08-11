@@ -151,7 +151,7 @@ public class ApiController {
 	 * 路徑: /product?name=Apple&price=50.5&amount=10
 	 * 路徑: /product?name=Banana&price=35.5&amount=20
 	 * 網址:http://localhost:8080/api/product?name=Apple&price=50.5&amount=10
-	 * 網址:http://localhost:8080/api/product?name=Apple&price=50.5&amount=10
+	 * 網址:http://localhost:8080/api/product?name=Banana&price=35.5&amount=20
 	 * */
 	@GetMapping("/product")
 	public String product(@RequestParam Map<String, Object> productMap) {
