@@ -170,7 +170,7 @@ public class ApiController {
 	 * 網址:http://localhost:8080/api/fruit?name=Banana&price=35.5&amount=20
 	 * 需要設計一個 Fruit 的物件
 	 * */
-	@GetMapping("/fruit")
+	@GetMapping(value = "/fruit", produces = "application/json")
 	public String fruit(Fruit fruit) {
 		// 回應 json 格式
 		Gson gson = new Gson();
