@@ -125,6 +125,15 @@ public class ApiController {
 	}
 	
 	
+	/**
+	 * 5. Lab 練習
+	 * 路徑:/exam?score=80&score=100&score=50&score=70&score=30
+	 * 網址:http://localhost:8080/api/exam?score=80&score=100&score=50&score=70&score=30
+	 * 請自行設計一個方法可以得到
+	 * 最高分 = ? 最低分 = ? 平均 = ? 總分 = ? 及格分數 = ? 不 及格分數 = ?
+	 * */
+	
+	
 	
 	
 	
