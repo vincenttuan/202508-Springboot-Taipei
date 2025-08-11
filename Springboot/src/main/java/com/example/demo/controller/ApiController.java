@@ -141,13 +141,23 @@ public class ApiController {
 		// 資料分組(及格分數 = ? 不及格分數 = ?)
 		Map<Boolean, List<Integer>> resultMap = scores.stream()
 								.collect(Collectors.partitioningBy(score -> score >= 60));
-		return String.format("最高分 = %d 最低分 = %d 平均 = %.1f 總分 = %d 及格分數 = %s 不及格分數 = %s",
+		return String.format("最高 = %d 最低 = %d 平均 = %.1f 總分 = %d 及格分數 = %s 不及格分數 = %s",
 				stat.getMax(), stat.getMin(), stat.getAverage(), stat.getSum(),
 				resultMap.get(true), resultMap.get(false));
 	}
 	
-	
-	
+	/**
+	 * 6. 多筆參數轉 Map
+	 * 路徑: /product?name=Apple&price=50.5&amount=10
+	 * 路徑: /product?name=Banana&price=35.5&amount=20
+	 * 網址:http://localhost:8080/api/product?name=Apple&price=50.5&amount=10
+	 * 網址:http://localhost:8080/api/product?name=Apple&price=50.5&amount=10
+	 * */
+	@GetMapping("/product")
+	public String product(@RequestParam Map<String, Object> productMap) {
+		return String.format("name: %s price: %s amount: %s", 
+				productMap.get("name"), productMap.get("price"), productMap.get("amount"));
+	}
 	
 	
 	
