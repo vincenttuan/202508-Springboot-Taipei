@@ -60,7 +60,12 @@ public class ApiController {
 	 * 網址:http://localhost:8080/api/add => 執行結果 => result = 0
 	 * 以下請設計一個方法滿足上述需求 ?
 	 * */
-	
+	@GetMapping("/add")
+	public String add(@RequestParam(defaultValue = "0") int x,
+					  @RequestParam(defaultValue = "0") int y) {
+		int result = x + y;
+		return String.format("result = %d", result);
+	}
 	
 	
 }
