@@ -50,6 +50,17 @@ public class ApiController {
 		return String.format("Hi %s, age:%d", name, age);
 	}
 	
+	/**
+	 * 3.Lab 練習 I
+	 * 路徑:/add?x=10&y=20
+	 * 路徑:/add?y=20
+	 * 路徑:/add
+	 * 網址:http://localhost:8080/api/add?x=10&y=20 => 執行結果 => result = 30
+	 * 網址:http://localhost:8080/api/add?y=20 => 執行結果 => result = 20
+	 * 網址:http://localhost:8080/api/add => 執行結果 => result = 0
+	 * 以下請設計一個方法滿足上述需求 ?
+	 * */
+	
 	
 	
 }
