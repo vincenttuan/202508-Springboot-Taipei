@@ -81,5 +81,21 @@ public class ApiController {
 	 * 以下請設計一個方法滿足上述需求 ?
 	 * */
 	
+	@GetMapping("/bmi")
+	public String bmi(@RequestParam(required = false) Double h,
+					  @RequestParam(required = false) Double w) {
+		
+		if(h == null && w == null) {
+			return "身高與體重未輸入";
+		} else if(h == null) {
+			return "身高未輸入";
+		} else if(w == null) {
+			return "體重未輸入";
+		}
+		
+		// 計算 bmi
+		double bmi = w / Math.pow(h/100, 2);
+		return String.format("bmi = %.2f", bmi);
+	}
 	
 }
