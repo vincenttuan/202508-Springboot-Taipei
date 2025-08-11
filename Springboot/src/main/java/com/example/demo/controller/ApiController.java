@@ -67,5 +67,19 @@ public class ApiController {
 		return String.format("x=%d y=%d result = %d", x, y, result);
 	}
 	
+	/**
+	 * 3.Lab 練習 II
+	 * 路徑:/bmi?h=170&w=60
+	 * 網址:http://localhost:8080/api/bmi?h=170&w=60 => 執行結果 => bmi = 20.76
+	 * 
+	 * 路徑:/bmi?h=170
+	 * 網址:http://localhost:8080/api/bmi?h=170 => 執行結果 => "體重未輸入"
+
+	 * 路徑:/bmi
+	 * 網址:http://localhost:8080/api/bmi => 執行結果 => "身高與體重未輸入"
+	 * 
+	 * 以下請設計一個方法滿足上述需求 ?
+	 * */
+	
 	
 }
