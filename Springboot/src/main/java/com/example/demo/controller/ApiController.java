@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.bean.Fruit;
+import com.google.gson.Gson;
 
 // 了解各種不同 URL 與參數的傳遞與接收
 @RestController
@@ -174,7 +175,9 @@ public class ApiController {
 		//return String.format("name: %s price: %.1f amount: %d", 
 		//		fruit.getName(), fruit.getPrice(), fruit.getAmount());
 		// 回應 json 格式
-		
+		Gson gson = new Gson();
+		String json = gson.toJson(fruit); // 將 fruit 物件轉 json 字串
+		return json;
 	}
 	
 	
