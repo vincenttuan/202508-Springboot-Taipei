@@ -64,7 +64,7 @@ public class ApiController {
 	public String add(@RequestParam(defaultValue = "0") int x,
 					  @RequestParam(defaultValue = "0") int y) {
 		int result = x + y;
-		return String.format("result = %d", result);
+		return String.format("x=%d y=%d result = %d", x, y, result);
 	}
 	
 	
