@@ -141,7 +141,7 @@ public class ApiController {
 		// 資料分組(及格分數 = ? 不及格分數 = ?)
 		Map<Boolean, List<Integer>> resultMap = scores.stream()
 								.collect(Collectors.partitioningBy(score -> score >= 60));
-		return String.format("最高分 = ? 最低分 = ? 平均 = ? 總分 = ? 及格分數 = ? 不及格分數 = ?",
+		return String.format("最高分 = %d 最低分 = %d 平均 = %.1f 總分 = %d 及格分數 = %s 不及格分數 = %s",
 				stat.getMax(), stat.getMin(), stat.getAverage(), stat.getSum(),
 				resultMap.get(true), resultMap.get(false));
 	}
