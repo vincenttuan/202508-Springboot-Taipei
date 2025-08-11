@@ -159,6 +159,14 @@ public class ApiController {
 				productMap.get("name"), productMap.get("price"), productMap.get("amount"));
 	}
 	
+	/**
+	 * 7. 多筆參數轉 Bean
+	 * 路徑: /fruit?name=Apple&price=50.5&amount=10
+	 * 路徑: /fruit?name=Banana&price=35.5&amount=20
+	 * 網址:http://localhost:8080/api/fruit?name=Apple&price=50.5&amount=10
+	 * 網址:http://localhost:8080/api/fruit?name=Banana&price=35.5&amount=20
+	 * 需要設計一個 Fruit 的物件
+	 * */
 	
 	
 	
