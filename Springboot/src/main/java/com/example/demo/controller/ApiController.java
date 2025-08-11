@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.Date;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -133,6 +134,17 @@ public class ApiController {
 	 * 最高分 = ? 最低分 = ? 平均 = ? 總分 = ? 及格分數 = ? 不及格分數 = ?
 	 * 提示使用: IntSummaryStatistics, Collectors.partitioningBy
 	 * */
+	@GetMapping("/exam")
+	public String exam(@RequestParam(value = "score", required = false) List<Integer> scores)  {
+		// 利用統計物件(最高分 = ? 最低分 = ? 平均 = ? 總分 = ?)
+		IntSummaryStatistics stat = scores.stream().mapToInt(Integer::intValue).summaryStatistics();
+		// 資料分組(及格分數 = ? 不及格分數 = ?)
+		Map<Boolean, List<Integer>> resultMap = scores.stream()
+								.collect(Collectors.partitioningBy(score -> score >= 60));
+		return String.format("最高分 = ? 最低分 = ? 平均 = ? 總分 = ? 及格分數 = ? 不及格分數 = ?",
+				stat.getMax(), stat.getMin(), stat.getAverage(), stat.getSum(),
+				resultMap.get(true), resultMap.get(false));
+	}
 	
 	
 	
