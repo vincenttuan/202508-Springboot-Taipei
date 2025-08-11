@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -105,6 +107,7 @@ public class ApiController {
 	 * 路徑:/age?age=17&age=21&age=20
 	 * 網址:http://localhost:8080/api/age?age=17&age=21&age=20
 	 * 計算出平均年齡 = ?
+	 * 成年與未成年的年齡有哪些 ?
 	 * */
 	@GetMapping("/age")
 	public String age(@RequestParam(value = "age", required = false) List<Integer> ages) {
@@ -112,7 +115,13 @@ public class ApiController {
 		if(ages != null) {
 			average = ages.stream().mapToInt(Integer::intValue).average().orElseGet(() -> 0.0);
 		}
-		return String.format("平均年齡: %.1f", average);
+		// 利用分組來區分成年與未成年
+		// true: 成年, false: 未成年
+		Map<Boolean, List<Integer>> resultMap = ages.stream()
+													.collect(Collectors.partitioningBy(age -> age >= 18));
+		
+		return String.format("平均年齡: %.1f 成年: %s 未成年: %s", 
+							average, resultMap.get(true), resultMap.get(false));
 	}
 	
 	
