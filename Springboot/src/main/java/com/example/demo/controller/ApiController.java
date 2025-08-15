@@ -262,7 +262,7 @@ public class ApiController {
 	 * 查詢：GET /parking → 顯示目前停車狀況（車位與車牌）
 	 * */
 	// 利用 Map 紀錄車位編號與車牌編號, 預設是 5 個空車位
-	private Map<Integer, String> parkingSlots = new HashMap<>(Map.of(1, null, 2, null, 3, null, 4, null, 5, null));
+	private Map<Integer, String> parkingSlots = new HashMap<>(Map.of(1, "", 2, "", 3, "", 4, "", 5, ""));
 	
 	/**
 	 * 查詢功能: 顯示所有車位資訊
