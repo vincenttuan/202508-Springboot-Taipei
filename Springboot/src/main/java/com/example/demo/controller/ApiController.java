@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -178,6 +179,19 @@ public class ApiController {
 		return json;
 	}
 	
+	/**
+	 * 8. 參數路徑: @PathVariable
+	 * 路徑: /score/80
+	 * 路徑: /score/40
+	 * 網址: http://localhost:8080/api/score/80
+	 * 網址: http://localhost:8080/api/score/40
+	 * 範例: 判定分數是否及格 ?
+	 * */
+	@GetMapping("/score/{value}")
+	public String confirmScore(@PathVariable("value") Integer value) {
+		String content = String.format("分數: %d 及格: %b", value, (value >= 60));
+		return content;
+	}
 	
 	
 	
