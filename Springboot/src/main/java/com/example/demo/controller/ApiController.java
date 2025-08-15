@@ -194,8 +194,21 @@ public class ApiController {
 		return content;
 	}
 	
-	
-	
+	/**
+	 * Lab. 參數路徑: @PathVariable
+	 * 路徑: /fruit/1
+	 * 路徑: /fruit/2
+	 * 網址: http://localhost:8080/api/fruit/1
+	 * 網址: http://localhost:8080/api/fruit/2
+	 * 範例: 透過水果編號可以得到的水果名稱
+	 * */
+	@GetMapping("/fruit/{fruitId}")
+	public String getFruit(@PathVariable Integer fruitId) {
+		Map<Integer, String> fruits = Map.of(1, "蘋果", 2, "西瓜", 3, "番茄");
+		String fruitName = fruits.get(fruitId);
+		String content = String.format("編號: %d 名稱: %s", fruitId, fruitName);
+		return content;
+	}
 	
 	
 	
