@@ -273,6 +273,24 @@ public class ApiController {
 		return parkingSlots.toString();
 	}
 	
+	/**
+	 * 停車功能: 將車輛停入指定車位
+	 * 路徑: /parking/2?plate=ABC123
+	 * */
+	@GetMapping("/{slot}")
+	public String parkCar(@PathVariable Integer slot, @RequestParam String plate) {
+		
+		if(!parkingSlots.containsKey(slot)) {
+			return String.format("車位  %d 不存在", slot);
+		}
+		
+		if(!parkingSlots.get(slot).equals("")) {
+			return String.format("車位  %d 已有車輛", slot);
+		}
+		
+		parkingSlots.put(slot, plate);
+		return String.format("車牌 %s 已停入 %d 車位", plate, slot);
+	}
 	
 	
 	
