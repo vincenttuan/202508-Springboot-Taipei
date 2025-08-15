@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -332,6 +333,7 @@ public class ApiController {
 	 * 刪除車位
 	 * 路徑: DELETE /parking?slot=6
 	 * */
+	@DeleteMapping("/parking")
 	public String deleteParkingSlot(@RequestParam Integer slot) {
 		
 		if(!parkingSlots.containsKey(slot)) {
