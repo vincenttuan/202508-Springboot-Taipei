@@ -277,7 +277,7 @@ public class ApiController {
 	 * 停車功能: 將車輛停入指定車位
 	 * 路徑: /parking/2?plate=ABC123
 	 * */
-	@GetMapping("/{slot}")
+	@GetMapping("/parking/{slot}")
 	public String parkCar(@PathVariable Integer slot, @RequestParam String plate) {
 		
 		if(!parkingSlots.containsKey(slot)) {
