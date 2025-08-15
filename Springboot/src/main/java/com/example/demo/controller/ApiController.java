@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -312,6 +313,20 @@ public class ApiController {
 		
 	}
 	
+	/**
+	 * 增加車位
+	 * 路徑: /parking?slot=6
+	 * */
+	@PostMapping("/parking")
+	public String addParkingSlot(@RequestParam Integer slot) {
+		
+		if(parkingSlots.containsKey(slot)) {
+			return String.format("車位  %d 號已 存在", slot);
+		}
+		
+		parkingSlots.put(slot, "");
+		return String.format("車位 %d 號加入成功", slot);
+	}
 	
 }
 
