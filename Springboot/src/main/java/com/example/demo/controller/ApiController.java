@@ -200,6 +200,7 @@ public class ApiController {
 	 * 路徑: /beverage/2
 	 * 網址: http://localhost:8080/api/beverage/1
 	 * 網址: http://localhost:8080/api/beverage/2
+	 * 網址: http://localhost:8080/api/beverage/
 	 * 網址: http://localhost:8080/api/beverage
 	 * 範例: 透過水果編號可以得到的飲料名稱
 	 * */
