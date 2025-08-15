@@ -235,5 +235,32 @@ public class ApiController {
 		return String.format("恭喜抽中: %d 元, 還剩下 %d 個紅包", cash, redPackets.size());
 	}
 	
+	/**
+	 * 停車場車位管理練習題
+	 * 題目說明
+	 * 請設計一個簡單的停車場管理程式，使用 Spring Boot Controller，利用 Map 紀錄車位與車牌。
+
+	 * 功能需求
+	 * 停車
+	 * 路徑：GET /parking/{slot}
+	 * 功能：將車輛停入指定車位，使用查詢參數取得車牌號碼。
+	 * 若車位不存在或已經有車，回傳錯誤訊息。
+
+	 * 離開
+	 * 路徑：GET /parking/leave/{slot}
+	 * 功能：車輛離開指定車位，清空該車位資料。
+	 * 若車位不存在或沒有車，回傳錯誤訊息。
+
+	 * 查詢
+	 * 路徑：GET /parking
+	 * 功能：顯示所有有車的車位及車牌。
+
+	 * 範例測試
+	 * 查詢：GET /parking/2?plate=ABC123 → 「車牌 ABC123 已停入車位 2」
+	 * 查詢：GET /parking/2?plate=XYZ → 「車位 2 已有車輛」
+	 * 查詢：GET /parking/leave/2 → 「車牌 ABC123 離開車位 2」
+	 * 查詢：GET /parking → 顯示目前停車狀況（車位與車牌）
+	 * */
+	
 }
 
