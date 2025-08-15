@@ -264,6 +264,16 @@ public class ApiController {
 	// 利用 Map 紀錄車位編號與車牌編號, 預設是 5 個空車位
 	private Map<Integer, String> parkingSlots = new HashMap<>(Map.of(1, null, 2, null, 3, null, 4, null, 5, null));
 	
+	/**
+	 * 查詢功能: 顯示所有車位資訊
+	 * 路徑: /parking
+	 * */
+	@GetMapping("/parking")
+	public String getParking() {
+		return parkingSlots.toString();
+	}
+	
+	
 	
 	
 }
