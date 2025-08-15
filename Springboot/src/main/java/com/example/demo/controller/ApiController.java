@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
@@ -213,6 +214,25 @@ public class ApiController {
 		String beverageName = beverages.get(beverageId);
 		String content = String.format("編號: %d 名稱: %s", beverageId, beverageName);
 		return content;
+	}
+	
+	/**
+	 * Lab: 抽紅包
+	 * 路徑: /redPackets/1
+	 * 路徑: /redPackets/2
+	 * 抽紅包抽到後可以得到該金額, 紅包被抽走後要移除, 可以使用 map
+	 * */
+	private Map<Integer, Integer> redPackets = new HashMap<>(Map.of(1, 100, 2, 200, 3, 300, 4, 400, 5, 500));
+	
+	@GetMapping("/redPackets/{no}")
+	public String drawRedPackets(@PathVariable Integer no) {
+		Integer cash = redPackets.get(no);
+		if(cash == null) {
+			return "無此紅包或紅包已被抽走";
+		}
+		// 移除紅包
+		redPackets.remove(no);
+		return String.format("恭喜抽中: %d 元", cash);
 	}
 	
 }
