@@ -232,7 +232,7 @@ public class ApiController {
 		}
 		// 移除紅包
 		redPackets.remove(no);
-		return String.format("恭喜抽中: %d 元", cash);
+		return String.format("恭喜抽中: %d 元, 還剩下 %d 個紅包", cash, redPackets.size());
 	}
 	
 }
