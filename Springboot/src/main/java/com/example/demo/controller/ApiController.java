@@ -189,7 +189,8 @@ public class ApiController {
 	 * */
 	@GetMapping("/score/{value}")
 	public String confirmScore(@PathVariable("value") Integer value) {
-		String content = String.format("分數: %d 及格: %b", value, (value >= 60));
+		boolean isPass = (value >= 60); 
+		String content = String.format("分數: %d 及格: %b", value, isPass);
 		return content;
 	}
 	
