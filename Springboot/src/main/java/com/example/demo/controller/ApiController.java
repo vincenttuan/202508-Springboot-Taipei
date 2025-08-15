@@ -281,15 +281,15 @@ public class ApiController {
 	public String parkCar(@PathVariable Integer slot, @RequestParam String plate) {
 		
 		if(!parkingSlots.containsKey(slot)) {
-			return String.format("車位  %d 不存在", slot);
+			return String.format("車位  %d 號不存在", slot);
 		}
 		
 		if(!parkingSlots.get(slot).equals("")) {
-			return String.format("車位  %d 已有車輛", slot);
+			return String.format("車位  %d 號已有車輛", slot);
 		}
 		
 		parkingSlots.put(slot, plate);
-		return String.format("車牌 %s 已停入 %d 車位", plate, slot);
+		return String.format("車牌 %s 已停入 %d 號車位", plate, slot);
 	}
 	
 	/**
@@ -299,16 +299,16 @@ public class ApiController {
 	@GetMapping("/parking/leave/{slot}")
 	public String leaveParking(@PathVariable Integer slot) {
 		if(!parkingSlots.containsKey(slot)) {
-			return String.format("車位  %d 不存在", slot);
+			return String.format("車位  %d 號不存在", slot);
 		}
 		
 		String plate = parkingSlots.get(slot);
 		if(plate.equals("")) {
-			return String.format("車位  %d 沒車輛", slot);
+			return String.format("車位  %d 號沒車輛", slot);
 		}
 		
 		parkingSlots.put(slot, "");
-		return String.format("車牌 %s 已離開 %d 車位", plate, slot);
+		return String.format("車牌 %s 已離開 %d 號車位", plate, slot);
 		
 	}
 	
