@@ -282,11 +282,11 @@ public class ApiController {
 	public String parkCar(@PathVariable Integer slot, @RequestParam String plate) {
 		
 		if(!parkingSlots.containsKey(slot)) {
-			return String.format("車位  %d 號不存在", slot);
+			return String.format("車位 %d 號不存在", slot);
 		}
 		
 		if(!parkingSlots.get(slot).equals("")) {
-			return String.format("車位  %d 號已有車輛", slot);
+			return String.format("車位 %d 號已有車輛", slot);
 		}
 		
 		parkingSlots.put(slot, plate);
@@ -305,7 +305,7 @@ public class ApiController {
 		
 		String plate = parkingSlots.get(slot);
 		if(plate.equals("")) {
-			return String.format("車位  %d 號沒車輛", slot);
+			return String.format("車位 %d 號沒車輛", slot);
 		}
 		
 		parkingSlots.put(slot, "");
@@ -315,18 +315,37 @@ public class ApiController {
 	
 	/**
 	 * 增加車位
-	 * 路徑: /parking?slot=6
+	 * 路徑: POST /parking?slot=6
 	 * */
 	@PostMapping("/parking")
 	public String addParkingSlot(@RequestParam Integer slot) {
 		
 		if(parkingSlots.containsKey(slot)) {
-			return String.format("車位  %d 號已存在", slot);
+			return String.format("車位 %d 號已存在", slot);
 		}
 		
 		parkingSlots.put(slot, "");
 		return String.format("車位 %d 號加入成功", slot);
 	}
 	
+	/**
+	 * 刪除車位
+	 * 路徑: DELETE /parking?slot=6
+	 * */
+	public String deleteParkingSlot(@RequestParam Integer slot) {
+		
+		if(!parkingSlots.containsKey(slot)) {
+			return String.format("車位 %d 號不存在", slot);
+		}
+		
+		// 判定該車位目前是否有車, 有車也不能刪除 
+		if(!parkingSlots.get(slot).equals("")) {
+			return String.format("該車位 %d 號目前有車停放", slot);
+		}
+		
+		parkingSlots.remove(slot);
+		return String.format("車位 %d 號移除成功", slot);
+		
+	}
 }
 
