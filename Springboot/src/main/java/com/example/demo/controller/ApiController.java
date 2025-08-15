@@ -321,7 +321,7 @@ public class ApiController {
 	public String addParkingSlot(@RequestParam Integer slot) {
 		
 		if(parkingSlots.containsKey(slot)) {
-			return String.format("車位  %d 號已 存在", slot);
+			return String.format("車位  %d 號已存在", slot);
 		}
 		
 		parkingSlots.put(slot, "");
