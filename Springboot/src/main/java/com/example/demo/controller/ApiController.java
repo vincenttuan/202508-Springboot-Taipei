@@ -203,7 +203,7 @@ public class ApiController {
 	 * 網址: http://localhost:8080/api/beverage
 	 * 範例: 透過水果編號可以得到的飲料名稱
 	 * */
-	@GetMapping("/beverage/{beverageId}")
+	@GetMapping(value = {"/beverage", "/beverage/", "/beverage/{beverageId}"})
 	public String getBeverage(@PathVariable(required = false) Integer beverageId) {
 		Map<Integer, String> beverages = Map.of(1, "蘋果汁", 2, "西瓜汁", 3, "番茄汁");
 		if(beverageId == null) {
