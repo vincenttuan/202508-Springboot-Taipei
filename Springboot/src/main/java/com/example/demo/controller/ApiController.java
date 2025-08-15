@@ -292,6 +292,25 @@ public class ApiController {
 		return String.format("車牌 %s 已停入 %d 車位", plate, slot);
 	}
 	
+	/**
+	 * 離開功能: 車輛離開指定車位
+	 * 路徑: /parking/leave/2
+	 * */
+	@GetMapping("/parking/leave/{slot}")
+	public String leaveParking(@PathVariable Integer slot) {
+		if(!parkingSlots.containsKey(slot)) {
+			return String.format("車位  %d 不存在", slot);
+		}
+		
+		String plate = parkingSlots.get(slot);
+		if(plate.equals("")) {
+			return String.format("車位  %d 沒車輛", slot);
+		}
+		
+		parkingSlots.put(slot, "");
+		return String.format("車牌 %s 已離開 %d 車位", plate, slot);
+		
+	}
 	
 	
 }
