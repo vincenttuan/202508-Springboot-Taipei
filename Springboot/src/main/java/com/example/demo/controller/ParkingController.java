@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.service.ParkingSlotService;
 
 @RestController
 @RequestMapping("/parking")
@@ -40,8 +43,9 @@ public class ParkingController {
 	 * 查詢：GET /parking/leave/2 → 「車牌 ABC123 離開車位 2」
 	 * 查詢：GET /parking → 顯示目前停車狀況（車位與車牌）
 	 * */
-	// 利用 Map 紀錄車位編號與車牌編號, 預設是 5 個空車位
-	private Map<Integer, String> parkingSlots = new HashMap<>(Map.of(1, "", 2, "", 3, "", 4, "", 5, ""));
+	
+	@Autowired
+	private ParkingSlotService service;
 	
 	/**
 	 * 查詢功能: 顯示所有車位資訊
@@ -49,7 +53,7 @@ public class ParkingController {
 	 * */
 	@GetMapping
 	public String getParking() {
-		return parkingSlots.toString();
+		return service.getAllSlots().toString();
 	}
 	
 	/**
@@ -58,17 +62,7 @@ public class ParkingController {
 	 * */
 	@GetMapping("/{slot}")
 	public String parkCar(@PathVariable Integer slot, @RequestParam String plate) {
-		
-		if(!parkingSlots.containsKey(slot)) {
-			return String.format("車位 %d 號不存在", slot);
-		}
-		
-		if(!parkingSlots.get(slot).equals("")) {
-			return String.format("車位 %d 號已有車輛", slot);
-		}
-		
-		parkingSlots.put(slot, plate);
-		return String.format("車牌 %s 已停入 %d 號車位", plate, slot);
+		return service.parkCar(slot, plate);
 	}
 	
 	/**
@@ -77,18 +71,7 @@ public class ParkingController {
 	 * */
 	@GetMapping("/leave/{slot}")
 	public String leaveParking(@PathVariable Integer slot) {
-		if(!parkingSlots.containsKey(slot)) {
-			return String.format("車位  %d 號不存在", slot);
-		}
-		
-		String plate = parkingSlots.get(slot);
-		if(plate.equals("")) {
-			return String.format("車位 %d 號沒車輛", slot);
-		}
-		
-		parkingSlots.put(slot, "");
-		return String.format("車牌 %s 已離開 %d 號車位", plate, slot);
-		
+		return service.leaveCar(slot);
 	}
 	
 	/**
@@ -97,13 +80,7 @@ public class ParkingController {
 	 * */
 	@PostMapping
 	public String addParkingSlot(@RequestParam Integer slot) {
-		
-		if(parkingSlots.containsKey(slot)) {
-			return String.format("車位 %d 號已存在", slot);
-		}
-		
-		parkingSlots.put(slot, "");
-		return String.format("車位 %d 號加入成功", slot);
+		return service.addSlot(slot);
 	}
 	
 	/**
@@ -112,18 +89,6 @@ public class ParkingController {
 	 * */
 	@DeleteMapping
 	public String deleteParkingSlot(@RequestParam Integer slot) {
-		
-		if(!parkingSlots.containsKey(slot)) {
-			return String.format("車位 %d 號不存在", slot);
-		}
-		
-		// 判定該車位目前是否有車, 有車也不能刪除 
-		if(!parkingSlots.get(slot).equals("")) {
-			return String.format("該車位 %d 號目前有車停放", slot);
-		}
-		
-		parkingSlots.remove(slot);
-		return String.format("車位 %d 號移除成功", slot);
-		
+		return service.deleteSlot(slot);
 	}
 }
