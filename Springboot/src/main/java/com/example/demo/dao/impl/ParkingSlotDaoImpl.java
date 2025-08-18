@@ -38,27 +38,31 @@ public class ParkingSlotDaoImpl implements ParkingSlotDao {
 		int updated = jdbcTemplate.update(sql, slot);
 		return updated > 0;
 	}
-
+	
+	// 增加車位
 	@Override
 	public boolean addSlot(int slot) {
 		String sql = "insert into parking_slot(slot, plate) values (?, '')";
 		int result = jdbcTemplate.update(sql, slot);
 		return result > 0;
 	}
-
+	
+	// 移除車位
 	@Override
 	public boolean deleteSlot(int slot) {
 		String sql = "delete from parking_slot where slot = ? and plate = ''";
 		int result = jdbcTemplate.update(sql, slot);
 		return result > 0;
 	}
-
+	
+	// 該車位是否存在 ?
 	@Override
 	public boolean exists(int slot) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
+	// 該車位是否有車 ?
 	@Override
 	public boolean hasCar(int slot) {
 		// TODO Auto-generated method stub
