@@ -16,16 +16,19 @@ public class ParkingSlotDaoImpl implements ParkingSlotDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
+	// 查詢所有停車位
 	@Override
 	public List<ParkingSlot> findAll() {
 		String sql = "select slot, plate from parking_slot order by slot";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(ParkingSlot.class));
 	}
-
+	
+	// 停放車輛
 	@Override
 	public boolean parkCar(int slot, String plate) {
-		// TODO Auto-generated method stub
-		return false;
+		String sql = "update parking_slot set plate = ? where slot = ? and plate = ''";
+		int updated = jdbcTemplate.update(sql, plate, slot); 
+		return updated > 0;
 	}
 
 	@Override
