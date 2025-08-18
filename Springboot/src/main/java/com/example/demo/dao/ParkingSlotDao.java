@@ -10,4 +10,7 @@ public interface ParkingSlotDao {
 	boolean leaveCar(int slot); // 移除車輛
 	boolean addSlot(int slot); // 增加車位
 	boolean deleteSlot(int slot); // 移除車位
+	
+	boolean exists(int slot); // 該車位是否存在 ?
+	boolean hasCar(int slot); // 該車位是否有車 ?
 }
