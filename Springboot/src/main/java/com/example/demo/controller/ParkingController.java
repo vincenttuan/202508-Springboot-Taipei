@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/parking")
 public class ParkingController {
 	/**
 	 * 停車場車位管理練習題
@@ -45,7 +47,7 @@ public class ParkingController {
 	 * 查詢功能: 顯示所有車位資訊
 	 * 路徑: /parking
 	 * */
-	@GetMapping("/parking")
+	@GetMapping
 	public String getParking() {
 		return parkingSlots.toString();
 	}
@@ -54,7 +56,7 @@ public class ParkingController {
 	 * 停車功能: 將車輛停入指定車位
 	 * 路徑: /parking/2?plate=ABC123
 	 * */
-	@GetMapping("/parking/{slot}")
+	@GetMapping("/{slot}")
 	public String parkCar(@PathVariable Integer slot, @RequestParam String plate) {
 		
 		if(!parkingSlots.containsKey(slot)) {
@@ -73,7 +75,7 @@ public class ParkingController {
 	 * 離開功能: 車輛離開指定車位
 	 * 路徑: /parking/leave/2
 	 * */
-	@GetMapping("/parking/leave/{slot}")
+	@GetMapping("/leave/{slot}")
 	public String leaveParking(@PathVariable Integer slot) {
 		if(!parkingSlots.containsKey(slot)) {
 			return String.format("車位  %d 號不存在", slot);
@@ -93,7 +95,7 @@ public class ParkingController {
 	 * 增加車位
 	 * 路徑: POST /parking?slot=6
 	 * */
-	@PostMapping("/parking")
+	@PostMapping
 	public String addParkingSlot(@RequestParam Integer slot) {
 		
 		if(parkingSlots.containsKey(slot)) {
@@ -108,7 +110,7 @@ public class ParkingController {
 	 * 刪除車位
 	 * 路徑: DELETE /parking?slot=6
 	 * */
-	@DeleteMapping("/parking")
+	@DeleteMapping
 	public String deleteParkingSlot(@RequestParam Integer slot) {
 		
 		if(!parkingSlots.containsKey(slot)) {
