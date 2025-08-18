@@ -53,4 +53,16 @@ public class ParkingSlotDaoImpl implements ParkingSlotDao {
 		return result > 0;
 	}
 
+	@Override
+	public boolean exists(int slot) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean hasCar(int slot) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
