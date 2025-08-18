@@ -1,0 +1,154 @@
+type: collection.insomnia.rest/5.0
+name: Scratch Pad
+meta:
+  id: wrk_scratchpad
+  created: 1747999769662
+  modified: 1747999769662
+  description: ""
+collection:
+  - name: Parking
+    meta:
+      id: fld_8fdc1e3628574076a3919439dc25b715
+      created: 1755262658081
+      modified: 1755262676970
+      sortKey: -1755262658081
+      description: ""
+    children:
+      - url: http://localhost:8080/parking
+        name: 查詢車位
+        meta:
+          id: req_29569fe41ea44a668248aa78f7e2fc03
+          created: 1755262679315
+          modified: 1755514145702
+          isPrivate: false
+          description: ""
+          sortKey: -1755262679315
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.4.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/parking/2?plate=ABC123
+        name: 停放車輛
+        meta:
+          id: req_39d101ca36dc404abe3689f7dfc52a8d
+          created: 1755262829909
+          modified: 1755514141528
+          isPrivate: false
+          description: ""
+          sortKey: -1755262829909
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.4.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/parking/leave/2
+        name: 移除車輛
+        meta:
+          id: req_0cf2a6ad229546059c3de4df13dea9b0
+          created: 1755262968161
+          modified: 1755514136552
+          isPrivate: false
+          description: ""
+          sortKey: -1755262830009
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.4.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/parking
+        name: 增加車位
+        meta:
+          id: req_49c3412056d44d3eaf79790fd460b5e3
+          created: 1755263484818
+          modified: 1755514132493
+          isPrivate: false
+          description: ""
+          sortKey: -1755263484818
+        method: POST
+        body:
+          mimeType: application/x-www-form-urlencoded
+          params:
+            - id: pair_24cb0f01629445fba793fdf929258039
+              name: slot
+              value: "6"
+              description: ""
+              disabled: false
+        headers:
+          - name: Content-Type
+            value: application/x-www-form-urlencoded
+          - name: User-Agent
+            value: insomnia/11.4.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/parking
+        name: 移除車位
+        meta:
+          id: req_b60f574caa1a4ae58db3cdbf4ec6f3d9
+          created: 1755264756951
+          modified: 1755514127333
+          isPrivate: false
+          description: ""
+          sortKey: -1755264756951
+        method: DELETE
+        body:
+          mimeType: application/x-www-form-urlencoded
+          params:
+            - id: pair_204e8fa2b2cc49b080ef4f3de8ba1704
+              name: slot
+              value: "6"
+              description: ""
+              disabled: false
+        headers:
+          - name: Content-Type
+            value: application/x-www-form-urlencoded
+          - name: User-Agent
+            value: insomnia/11.4.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1747999785419
+    modified: 1747999785419
+environments:
+  name: Base Environment
+  meta:
+    id: env_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1747999785264
+    modified: 1747999785264
+    isPrivate: false
