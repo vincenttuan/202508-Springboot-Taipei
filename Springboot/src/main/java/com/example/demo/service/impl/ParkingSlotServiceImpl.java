@@ -22,6 +22,12 @@ public class ParkingSlotServiceImpl implements ParkingSlotService {
 
 	@Override
 	public String parkCar(int slot, String plate) {
+		// 判斷該車位是否有車
+		boolean exist = dao.hasCar(slot);
+		if(exist) {
+			return String.format("%d 號車位已有車無法停入", slot);
+		}
+		// 停車
 		boolean check = dao.parkCar(slot, plate);
 		if(check) {
 			return String.format("車牌 %s 已停入 %d 號車位", plate, slot);
@@ -31,6 +37,12 @@ public class ParkingSlotServiceImpl implements ParkingSlotService {
 
 	@Override
 	public String leaveCar(int slot) {
+		// 判斷該車位是否有車
+		boolean exist = dao.hasCar(slot);
+		if(!exist) {
+			return String.format("%d 號車位目前無車可以移出", slot);
+		}
+		// 移車
 		boolean check = dao.leaveCar(slot);
 		if(check) {
 			return String.format("%d 號車位的車子已經離開", slot);
