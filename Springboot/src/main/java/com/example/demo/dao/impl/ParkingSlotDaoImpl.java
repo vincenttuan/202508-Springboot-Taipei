@@ -48,8 +48,9 @@ public class ParkingSlotDaoImpl implements ParkingSlotDao {
 
 	@Override
 	public boolean deleteSlot(int slot) {
-		// TODO Auto-generated method stub
-		return false;
+		String sql = "delete from parking_slot where slot = ? and plate = ''";
+		int result = jdbcTemplate.update(sql, slot);
+		return result > 0;
 	}
 
 }
