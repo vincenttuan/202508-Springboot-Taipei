@@ -55,6 +55,12 @@ public class ParkingSlotServiceImpl implements ParkingSlotService {
 
 	@Override
 	public String deleteSlot(int slot) {
+		// 查詢該車位是否存在
+		boolean exist = dao.exists(slot);
+		if(!exist) {
+			return String.format("%d 號車位不存在無法刪除", slot);
+		}
+		// 刪除車位
 		boolean check = dao.deleteSlot(slot);
 		if(check) {
 			return String.format("移除 %d 號車位成功", slot);
