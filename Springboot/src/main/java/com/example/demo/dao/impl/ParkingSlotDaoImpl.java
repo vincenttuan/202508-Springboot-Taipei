@@ -66,8 +66,9 @@ public class ParkingSlotDaoImpl implements ParkingSlotDao {
 	// 該車位是否有車 ?
 	@Override
 	public boolean hasCar(int slot) {
-		// TODO Auto-generated method stub
-		return false;
+		String sql = "select count(*) from parking_slot where slot = ? and plate <> ''";
+		Integer count = jdbcTemplate.queryForObject(sql, Integer.class, slot);
+		return count > 0;
 	}
 
 }
