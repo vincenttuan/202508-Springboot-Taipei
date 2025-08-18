@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 /*
 use web;
@@ -20,6 +21,7 @@ insert into parking_slot (slot, plate) values (1, ''), (2, ''), (3, ''), (4, '')
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class ParkingSlot {
 	private Integer slot;
 	private String plate;
