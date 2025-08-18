@@ -40,6 +40,12 @@ public class ParkingSlotServiceImpl implements ParkingSlotService {
 
 	@Override
 	public String addSlot(int slot) {
+		// 查詢該車位是否存在
+		boolean exist = dao.exists(slot);
+		if(exist) {
+			return String.format("%d 號車位已經存在無法新增", slot);
+		}
+		// 新增車位
 		boolean check = dao.addSlot(slot);
 		if(check) {
 			return String.format("新增 %d 號車位成功", slot);
