@@ -25,9 +25,8 @@ public class ParkingSlotServiceImpl implements ParkingSlotService {
 		boolean check = dao.parkCar(slot, plate);
 		if(check) {
 			return String.format("車牌 %s 已停入 %d 號車位", plate, slot);
-		} else {
-			return String.format("車牌 %s 無法停入 %d 號車位", plate, slot);
 		}
+		return String.format("車牌 %s 無法停入 %d 號車位", plate, slot);
 	}
 
 	@Override
@@ -35,21 +34,26 @@ public class ParkingSlotServiceImpl implements ParkingSlotService {
 		boolean check = dao.leaveCar(slot);
 		if(check) {
 			return String.format("%d 號車位的車子已經離開", slot);
-		} else {
-			return String.format("%d 號車位目前無車", slot);
 		}
+		return String.format("%d 號車位目前無車", slot);
 	}
 
 	@Override
 	public String addSlot(int slot) {
-		// TODO Auto-generated method stub
-		return null;
+		boolean check = dao.addSlot(slot);
+		if(check) {
+			return String.format("新增 %d 號車位成功", slot);
+		}
+		return String.format("新增 %d 號車位失敗", slot);
 	}
 
 	@Override
 	public String deleteSlot(int slot) {
-		// TODO Auto-generated method stub
-		return null;
+		boolean check = dao.deleteSlot(slot);
+		if(check) {
+			return String.format("移除 %d 號車位成功", slot);
+		}
+		return String.format("移除 %d 號車位失敗", slot);
 	}
 
 }
