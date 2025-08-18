@@ -41,8 +41,9 @@ public class ParkingSlotDaoImpl implements ParkingSlotDao {
 
 	@Override
 	public boolean addSlot(int slot) {
-		// TODO Auto-generated method stub
-		return false;
+		String sql = "insert into parking_slot(slot, plate) values (?, '')";
+		int result = jdbcTemplate.update(sql, slot);
+		return result > 0;
 	}
 
 	@Override
