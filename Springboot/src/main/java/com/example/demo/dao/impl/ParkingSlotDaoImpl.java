@@ -30,11 +30,13 @@ public class ParkingSlotDaoImpl implements ParkingSlotDao {
 		int updated = jdbcTemplate.update(sql, plate, slot); 
 		return updated > 0;
 	}
-
+	
+	// 移除車輛
 	@Override
 	public boolean leaveCar(int slot) {
-		// TODO Auto-generated method stub
-		return false;
+		String sql = "update parking_slot set plate = '' where slot = ? and plate <> ''";
+		int updated = jdbcTemplate.update(sql, slot);
+		return updated > 0;
 	}
 
 	@Override
