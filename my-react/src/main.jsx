@@ -14,10 +14,11 @@ import App10 from './App10.jsx'
 import App11 from './App11.jsx'
 import App12 from './App12.jsx'
 import App13 from './App13.jsx'
+import App14 from './App14.jsx'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App13 />
-  </React.StrictMode>,
+    <App14 />
+  </React.StrictMode>
 )
