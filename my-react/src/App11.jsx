@@ -47,7 +47,6 @@ function App11() {
                             )
                         }))
                     }
-
                 </tbody>
                 <tfoot>
                     <tr>
