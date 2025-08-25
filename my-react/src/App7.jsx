@@ -12,7 +12,7 @@ function App7() {
             {
                 items.map((item, index) => (
                     <div>
-                        {item.id} {item.name} {item.price}
+                        index={index} id={item.id} name={item.name} price={item.price}
                     </div>
                 ))
             }        
