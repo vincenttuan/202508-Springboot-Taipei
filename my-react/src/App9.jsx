@@ -16,9 +16,13 @@ function App9() {
         { id: 4, name: '牙膏', price: 45, category: '日用品', qty:8 }
     ];
 
+    // 計算總價
+    const totalPrice = products.reduce((sum, product) => sum + product.price * product.qty, 0);
+
     return(
         <>
             <h1>商品列表</h1>
+            <h2>總價:{totalPrice}</h2>
             <table border="1">
                 <thead>
                     <tr>
