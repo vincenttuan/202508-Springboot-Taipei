@@ -1,4 +1,4 @@
-import StudentTable from "./Student"
+import {StudentTable} from "./Student"
 // 父組件 
 function App12() {
     const students = [
