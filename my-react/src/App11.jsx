@@ -15,7 +15,7 @@ id | name | score | pass
 試著拆分父子組件
 */
 
-function App() {
+function App11() {
     const students = [
         {id:1, name:'小明', score:55},
         {id:2, name:'小美', score:78},
@@ -61,4 +61,4 @@ function App() {
     )
 }
 
-export default App;
+export default App11;
