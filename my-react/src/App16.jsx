@@ -38,6 +38,11 @@ function App16() {
             <div>
                 已喝了 {drankCC} / {maxCC} cc
             </div>
+            
+            {/* 進度條 */}
+            <progress value={drankCC} max={maxCC} />
+            <p />
+
             <button onClick={drinkWater}>喝一杯水 (250cc)</button>
             <button onClick={drawWater}>吐一杯水 (-250cc)</button>
             <button onClick={reset}>清除記錄 (歸 0)</button>
