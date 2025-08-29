@@ -17,7 +17,14 @@ function App16() {
 
     // 喝水(每次一杯)
     function drinkWater() {
+        if(drankCC >= maxCC) return;
         setCups(cups + 1);
+    }
+
+    // 吐一杯水
+    function drawWater() {
+        if(drankCC <= 0) return;
+        setCups(cups - 1);
     }
 
     // 清除
@@ -32,6 +39,7 @@ function App16() {
                 已喝了 {drankCC} / {maxCC} cc
             </div>
             <button onClick={drinkWater}>喝一杯水 (250cc)</button>
+            <button onClick={drawWater}>吐一杯水 (-250cc)</button>
             <button onClick={reset}>清除記錄 (歸 0)</button>
         </>
     )
