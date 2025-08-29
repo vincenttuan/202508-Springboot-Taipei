@@ -15,6 +15,9 @@ function App16() {
     // 已喝水量
     const drankCC = cups * cupCC;
 
+    // 已喝%數
+    const percent = (drankCC / maxCC * 100).toFixed(1);
+
     // 喝水(每次一杯)
     function drinkWater() {
         if(drankCC >= maxCC) return;
@@ -40,7 +43,7 @@ function App16() {
             </div>
             
             {/* 進度條 */}
-            <progress value={drankCC} max={maxCC} />
+            <progress value={drankCC} max={maxCC} /> {percent} %
             <p />
 
             <button onClick={drinkWater}>喝一杯水 (250cc)</button>
