@@ -13,8 +13,8 @@ function App18() {
     const foods = [
         { name: "餅乾", calories: 150 },
         { name: "蛋糕", calories: 300 },
-        { name: "水果", calories: 80 }
-        
+        { name: "水果", calories: 80 },
+        { name: "巧克力", calories: 250 },
     ];
 
     // 利用 useState 來記錄每種食物的份數
