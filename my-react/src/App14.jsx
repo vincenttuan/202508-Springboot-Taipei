@@ -4,7 +4,7 @@ function App14() {
 
     function handleClick() {
         count++;
-        document.getElementById('count').textContent = count; // 資料渲染
+        document.getElementById('count').textContent = count; // 手動資料渲染
     }
 
     return(
