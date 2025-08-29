@@ -16,6 +16,7 @@ function App18() {
         { name: "蛋糕", calories: 300 },
         { name: "水果", calories: 80 },
         { name: "巧克力", calories: 250 },
+        { name: "水", calories: 0 },
     ];
 
     // 每日最大卡路里
