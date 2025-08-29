@@ -28,12 +28,15 @@ function App17() {
             case 1: // 餅乾
                 setCount1(count1 + 1);
                 setCalories(calories + food1.calories);
+                break;
             case 2: // 蛋糕
                 setCount2(count2 + 1);
                 setCalories(calories + food2.calories);
+                break;
             case 3: // 水果
                 setCount3(count3 + 1);
                 setCalories(calories + food3.calories);
+                break;
         }
     }
 
@@ -47,17 +50,17 @@ function App17() {
     return(
         <>
             <h1>多樣點心模擬器</h1>
-            <h2>攝取熱量: 0 卡</h2>
+            <h2>攝取熱量: {calories} 卡</h2>
             <ul>
-                <li>餅乾 : 0 份</li>
-                <li>蛋糕 : 0 份</li>
-                <li>水果 : 0 份</li>
+                <li>{food1.name} : {count1} 份</li>
+                <li>{food2.name} : {count2} 份</li>
+                <li>{food3.name} : {count3} 份</li>
             </ul>
             <p />
-            <button>吃餅乾 (+150卡)</button>
-            <button>吃蛋糕 (+300卡)</button>
-            <button>吃水果 (+80卡)</button>
-            <button>清除 (歸 0)</button>
+            <button onClick={() => eatFood(1)}>吃{food1.name} (+{food1.calories}卡)</button>
+            <button onClick={() => eatFood(2)}>吃{food2.name} (+{food2.calories}卡)</button>
+            <button onClick={() => eatFood(3)}>吃{food3.name} (+{food3.calories}卡)</button>
+            <button onClick={reset}>清除 (歸 0)</button>
         </>
     )
 }
