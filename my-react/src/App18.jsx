@@ -4,6 +4,7 @@
  * 蛋糕 300卡
  * 水果 80卡
  * 記錄吃了幾種食物並計算大卡
+ * 每日最大卡路里是 2000, 若超過就無法再進食
  */
 
 import { useState } from "react";
@@ -17,6 +18,9 @@ function App18() {
         { name: "巧克力", calories: 250 },
     ];
 
+    // 每日最大卡路里
+    const maxCalories = 2000;
+
     // 利用 useState 來記錄每種食物的份數
     //const [counts, setCounts] = useState([0, 0, 0]);
     const [counts, setCounts] = useState(Array(foods.length).fill(0));
@@ -26,6 +30,10 @@ function App18() {
 
     // 吃指定食物
     function eatFood(i) {
+        if(calories >= maxCalories) {
+            return;
+        }
+
         // 取得 counts 陣列資料
         //const currentCounts = Array.from(counts);
         const currentCounts = [...counts];
@@ -33,6 +41,11 @@ function App18() {
 
         setCounts(currentCounts);
         setCalories(calories + foods[i].calories);
+    }
+
+    // 判斷食物按鈕是否要關閉
+    function isDisabled(i) {
+        return calories + foods[i].calories > maxCalories;
     }
 
     // 清除/重置
@@ -56,7 +69,9 @@ function App18() {
             <p />
             {
                 foods.map((food, i) => (
-                    <button onClick={() => eatFood(i)}>吃{food.name} (+{food.calories}卡)</button>
+                    <button key={i} onClick={() => eatFood(i)} disabled={isDisabled(i)}>
+                        吃{food.name} (+{food.calories}卡)
+                    </button>
                 ))
             }
             
