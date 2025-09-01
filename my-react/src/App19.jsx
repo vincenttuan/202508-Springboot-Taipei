@@ -34,14 +34,18 @@ function App19() {
                     </tr>
                 </thead>
                 <tbody>
-                   
-                    <tr>
-                        <td>1</td>
-                        <td>My title</td>
-                        <td>999</td>
-                        <td><button className="pure-button pure-button-primary">編輯</button></td>
-                        <td><button className="pure-button pure-button-primary">刪除</button></td>
-                    </tr>
+                    {
+                        posts.map((post) => (
+                            <tr key={post.id}>
+                                <td>{post.id}</td>
+                                <td>{post.title}</td>
+                                <td>{post.views}</td>
+                                <td><button className="pure-button pure-button-primary">編輯</button></td>
+                                <td><button className="pure-button pure-button-primary">刪除</button></td>
+                            </tr>
+                        ))
+                    }
+                    
                 </tbody>
             </table>
 
