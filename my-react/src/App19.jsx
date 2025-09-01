@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 const API_URL = "http://localhost:3000/posts";
 
 function App19() {
+    const [posts, setPosts] = useState([]);
 
     const fetchPosts = async() => {
         const res = await fetch(API_URL);
         const data = await res.json();
         console.log(data);
+        setPosts(data);
     }
 
     // 網頁載入完畢之後要執行某個方法
@@ -32,6 +34,7 @@ function App19() {
                     </tr>
                 </thead>
                 <tbody>
+                   
                     <tr>
                         <td>1</td>
                         <td>My title</td>
