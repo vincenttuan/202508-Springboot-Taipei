@@ -53,6 +53,15 @@ function App19() {
         fetchPosts();
     };
 
+    // 刪除 Delete
+    const deletePost = async (id) => {
+        await fetch(`${API_URL}/${id}`, {
+            method: "DELETE"
+        });
+        // 重載資料
+        fetchPosts();
+    };
+
     // 網頁載入完畢之後要執行某個方法
     useEffect(() => {
         fetchPosts();
@@ -82,7 +91,7 @@ function App19() {
                                 <td>{post.title}</td>
                                 <td>{post.views}</td>
                                 <td><button className="pure-button pure-button-primary" onClick={() => editPost(post)}>編輯</button></td>
-                                <td><button className="pure-button pure-button-primary">刪除</button></td>
+                                <td><button className="pure-button pure-button-primary" onClick={() => deletePost(post.id)}>刪除</button></td>
                             </tr>
                         ))
                     }
