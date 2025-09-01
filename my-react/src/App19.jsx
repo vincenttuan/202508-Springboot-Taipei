@@ -4,6 +4,7 @@ const API_URL = "http://localhost:3000/posts";
 
 function App19() {
     const [posts, setPosts] = useState([]);
+    const [form, setForm] = useState({id: "", title: "", views: ""});
 
     const fetchPosts = async() => {
         const res = await fetch(API_URL);
@@ -20,8 +21,8 @@ function App19() {
     return(
         <div className="pure-form">
             <h1>貼(PO)文管理-使用 fetch</h1>
-            標題: <input name="title" placeholder="請輸入標題" /><p />
-            點閱: <input name="views" placeholder="請輸入瀏覽量" /><p />
+            標題: <input name="title" placeholder="請輸入標題" value={form.title} /><p />
+            點閱: <input name="views" placeholder="請輸入瀏覽量" value={form.views} /><p />
 
             <button className="pure-button pure-button-primary">修改貼文</button>
             &nbsp;
