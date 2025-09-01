@@ -1,4 +1,20 @@
+import { useState, useEffect } from "react";
+
+const API_URL = "http://localhost:3000/posts";
+
 function App19() {
+
+    const fetchPosts = async() => {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        console.log(data);
+    }
+
+    // 網頁載入完畢之後要執行某個方法
+    useEffect(() => {
+        fetchPosts();
+    }, [])
+
     return(
         <div className="pure-form">
             <h1>貼(PO)文管理-使用 fetch</h1>
