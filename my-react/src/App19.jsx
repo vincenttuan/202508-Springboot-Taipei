@@ -22,6 +22,18 @@ function App19() {
         setForm((prev) => ({...prev, [name]: value}));
     };
 
+    const addPost = async () => {
+        await fetch(API_URL, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({title: form.title, views: Number(form.views)})
+        });
+        // 表單清空
+        setForm({id: "", title: "", views: ""});
+        // 重載資料
+        fetchPosts();
+    };
+
     // 網頁載入完畢之後要執行某個方法
     useEffect(() => {
         fetchPosts();
@@ -35,7 +47,7 @@ function App19() {
 
             <button className="pure-button pure-button-primary">修改貼文</button>
             &nbsp;
-            <button className="pure-button pure-button-primary">新增貼文</button>
+            <button className="pure-button pure-button-primary" onClick={addPost}>新增貼文</button>
             <p />
             <table className="pure-table pure-table-bordered" align="center">
                 <thead>
