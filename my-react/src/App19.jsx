@@ -13,6 +13,15 @@ function App19() {
         setPosts(data);
     }
 
+    const handleChange = (e) => {
+        // 從事件物件 e 中取得目標元素(input)屬性的 name 與 value
+        const {name, value} = e.target;
+        // 呼叫 setForm 更新狀態
+        // 利用展開運算子 ...prev 保留原本其他欄位的資料
+        // 最後根據 name 來設定新的 value 進行該欄位的更新
+        setForm((prev) => ({...prev, [name]: value}));
+    };
+
     // 網頁載入完畢之後要執行某個方法
     useEffect(() => {
         fetchPosts();
@@ -21,8 +30,8 @@ function App19() {
     return(
         <div className="pure-form">
             <h1>貼(PO)文管理-使用 fetch</h1>
-            標題: <input name="title" placeholder="請輸入標題" value={form.title} /><p />
-            點閱: <input name="views" placeholder="請輸入瀏覽量" value={form.views} /><p />
+            標題: <input name="title" placeholder="請輸入標題" value={form.title} onChange={handleChange} /><p />
+            點閱: <input name="views" placeholder="請輸入瀏覽量" value={form.views} onChange={handleChange} /><p />
 
             <button className="pure-button pure-button-primary">修改貼文</button>
             &nbsp;
