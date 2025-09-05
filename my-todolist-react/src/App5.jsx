@@ -49,11 +49,16 @@ function App() {
     )
   }
 
+  // 刪除代辦事項
+  const handleDelete = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  }
+
   return (
     <div className='container mt-5'>
       <h1 className='text-center mb-4'>My Todo List</h1>
       <TodoInput todo={todo} handleChange={handleChange} handleClick={handleClick} />
-      <TodoList todos={todos} changeCompleted={changeCompleted} />
+      <TodoList todos={todos} changeCompleted={changeCompleted} onDelete={handleDelete} />
     </div>
   )
 }
