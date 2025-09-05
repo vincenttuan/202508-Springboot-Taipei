@@ -31,6 +31,12 @@ function App() {
     setTodo('');
   };
 
+  const changeCompleted = (id) => {
+    setTodos(
+      todos.map((todo) => todo.id === id ? {...todo, completed: !todo.completed} : todo)
+    )
+  }
+
   return (
     <>
       <h1>My Todo List</h1>
@@ -43,7 +49,7 @@ function App() {
           todos.map((todo, index) => (
             <li key={todo.id}>
               {index} - {todo.id} - {todo.text} - 
-              <input type="checkbox" checked={todo.completed} />
+              <input type="checkbox" checked={todo.completed} onChange={() => changeCompleted(todo.id)} />
             </li>
           ))
         }
