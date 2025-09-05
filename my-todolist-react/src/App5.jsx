@@ -9,6 +9,7 @@ src/
 */
 import { useState } from 'react'
 import './App.css'
+import TodoInput from './components/TodoInput';
 
 // useState + 物件陣列的應用
 function App() {
@@ -49,10 +50,7 @@ function App() {
   return (
     <>
       <h1>My Todo List</h1>
-      <div>
-        <input type="text" value={todo} onChange={handleChange} />
-        <button onClick={handleClick}>Add</button>
-      </div>
+      <TodoInput />
       <ul>
         {
           todos.map((todo, index) => (
