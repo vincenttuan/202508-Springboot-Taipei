@@ -1,4 +1,4 @@
-function TodoItem({index, todo, changeCompleted}) {
+function TodoItem({index, todo, changeCompleted, onDelete}) {
 
     return(
         <li key={todo.id}
@@ -8,6 +8,7 @@ function TodoItem({index, todo, changeCompleted}) {
         >
             {index} - {todo.id} - {todo.text} - 
             <input className="me-2" type="checkbox" checked={todo.completed} onChange={() => changeCompleted(todo.id)} />
+            <button className="btn btn-danger btn-sm" onClick={() => onDelete(todo.id)}>X</button>
         </li>
     )
 
