@@ -10,6 +10,7 @@ src/
 import { useState } from 'react'
 import './App.css'
 import TodoInput from './components/TodoInput';
+import TodoList from './components/TodoList';
 
 // useState + 物件陣列的應用
 function App() {
@@ -51,17 +52,7 @@ function App() {
     <>
       <h1>My Todo List</h1>
       <TodoInput todo={todo} handleChange={handleChange} handleClick={handleClick} />
-      <ul>
-        {
-          todos.map((todo, index) => (
-            <li key={todo.id}>
-              {index} - {todo.id} - {todo.text} - 
-              <input type="checkbox" checked={todo.completed} onChange={() => changeCompleted(todo.id)} />
-            </li>
-          ))
-        }
-
-      </ul>
+      <TodoList todos={todos} changeCompleted={changeCompleted} />
     </>
   )
 }
