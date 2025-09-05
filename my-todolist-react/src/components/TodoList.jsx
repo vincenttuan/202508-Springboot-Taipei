@@ -2,7 +2,7 @@ import TodoItem from "./TodoItem";
 
 function TodoList({todos, changeCompleted}) {
     return(
-        <ul>
+        <ul className="list-group">
         {
             todos.map((todo, index) => (
                 <TodoItem index={index} todo={todo} changeCompleted={changeCompleted} />
