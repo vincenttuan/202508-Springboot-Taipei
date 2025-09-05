@@ -50,7 +50,7 @@ function App() {
   return (
     <>
       <h1>My Todo List</h1>
-      <TodoInput />
+      <TodoInput todo={todo} handleChange={handleChange} handleClick={handleClick} />
       <ul>
         {
           todos.map((todo, index) => (

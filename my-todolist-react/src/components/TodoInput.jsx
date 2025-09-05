@@ -1,4 +1,4 @@
-function TodoInput() {
+function TodoInput({todo, handleChange, handleClick}) {
 
     return(
         <div>
