@@ -8,12 +8,16 @@ function App() {
 
   const [todo, setTodo] = useState('');
 
+  const handleChange = (e) => {
+    // 設定 todo 的內容就是欄位所輸入的內容
+    setTodo(e.target.value);
+  };
 
   return (
     <>
       <h1>My Todo List</h1>
       <div>
-        <input type="text" value={todo} />
+        <input type="text" value={todo} onChange={handleChange} />
         <button>Add</button>
       </div>
       <ul>
