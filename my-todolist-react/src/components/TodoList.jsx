@@ -1,12 +1,11 @@
+import TodoItem from "./TodoItem";
+
 function TodoList({todos, changeCompleted}) {
     return(
         <ul>
         {
             todos.map((todo, index) => (
-                <li key={todo.id}>
-                {index} - {todo.id} - {todo.text} - 
-                <input type="checkbox" checked={todo.completed} onChange={() => changeCompleted(todo.id)} />
-                </li>
+                <TodoItem index={index} todo={todo} changeCompleted={changeCompleted} />
             ))
         }
         </ul>
