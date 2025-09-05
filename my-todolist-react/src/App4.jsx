@@ -21,8 +21,12 @@ function App() {
   const handleClick = (e) => {
     // 若 todo 沒資料則離開
     if(!todo) return; 
-    // 在原本的 todo 資料後面加上新的 todo
-    setTodos([...todos, todo]);
+    // 取得目前最大的 id 值並加 1
+    const newId = todo.length > 0 ? Math.max(...todos.map((t) => t.id)) + 1 : 1;
+    // 新的 todo 物件
+    const newTodo = {id: newId, text: todo, completed: false};
+    // 在原本的 todo 資料後面加上新的 newTodo
+    setTodos([...todos, newTodo]);
     // todo 清空
     setTodo('');
   };
