@@ -13,12 +13,21 @@ function App() {
     setTodo(e.target.value);
   };
 
+  const handleClick = (e) => {
+    // 若 todo 沒資料則離開
+    if(!todo) return; 
+    // 在原本的 todo 資料後面加上新的 todo
+    setTodos([...todos, todo]);
+    // todo 清空
+    setTodo('');
+  };
+
   return (
     <>
       <h1>My Todo List</h1>
       <div>
         <input type="text" value={todo} onChange={handleChange} />
-        <button>Add</button>
+        <button onClick={handleClick}>Add</button>
       </div>
       <ul>
         {
