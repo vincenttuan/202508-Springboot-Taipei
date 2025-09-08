@@ -17,6 +17,6 @@ public interface TodoService {
 	public TodoDTO uptTodo(TodoDTO todoDTO) throws TodoNotFoundException;
 	
 	// 刪除代辦事項
-	public void delTodo(TodoDTO todoDTO) throws TodoNotFoundException;
+	public void delTodo(Long id) throws TodoNotFoundException;
 	
 }

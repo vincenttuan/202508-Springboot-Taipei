@@ -59,9 +59,14 @@ public class TodoServiceImpl implements TodoService {
 	
 	// 刪除代辦事項
 	@Override
-	public void delTodo(TodoDTO todoDTO) throws TodoNotFoundException {
-		// TODO Auto-generated method stub
-		
+	public void delTodo(Long id) throws TodoNotFoundException {
+		// 確認是否有此筆資料
+		if(todoRepository.existsById(id)) {
+			todoRepository.deleteById(id);
+			return;
+		}
+		// 拋出例外
+		throw new TodoNotFoundException("查無資料");
 	}
 	
 	
