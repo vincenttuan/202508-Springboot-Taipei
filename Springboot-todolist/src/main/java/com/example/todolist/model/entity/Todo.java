@@ -23,10 +23,10 @@ public class Todo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // 由資料庫自行決定 id 生成策略
 	private Long id;
 	
-	@Column(name = "text", length = 255, nullable = false, unique = false)
-	private String text;
+	@Column(name = "message", length = 255, nullable = false, unique = false)
+	private String message;
 	
-	@Column(name = "completed", nullable = false, unique = false)
-	private Boolean completed;
+	@Column(name = "finished", nullable = false, unique = false)
+	private Boolean finished;
 	
 }
