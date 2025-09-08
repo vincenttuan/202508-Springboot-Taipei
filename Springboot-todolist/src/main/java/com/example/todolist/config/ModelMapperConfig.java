@@ -17,14 +17,14 @@ public class ModelMapperConfig {
 	ModelMapper modelMapper() {
 		ModelMapper modelMapper = new ModelMapper();
 		
-		// 自訂 Todo -> TodoDTO 欄位映射 
+		// 正向映射: 自訂 Todo -> TodoDTO 欄位映射 
 		modelMapper.typeMap(Todo.class, TodoDTO.class)
 				   .addMappings(mapper -> {
 					   mapper.map(Todo::getMessage, TodoDTO::setText);
 					   mapper.map(Todo::getFinished, TodoDTO::setCompleted);
 				   });
 		
-		// 自訂 TodoDTO -> Todo 欄位映射
+		// 反向映射: 自訂 TodoDTO -> Todo 欄位映射
 		modelMapper.typeMap(TodoDTO.class, Todo.class)		   
 				   .addMappings(mapper -> {
 					   mapper.map(TodoDTO::getText, Todo::setMessage);
