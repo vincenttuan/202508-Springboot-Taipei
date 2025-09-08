@@ -46,8 +46,15 @@ public class TodoServiceImpl implements TodoService {
 	// 修改代辦事項
 	@Override
 	public TodoDTO uptTodo(TodoDTO todoDTO) throws TodoNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		return todoRepository.findById(todoDTO.getId())
+							 .map(todo -> {
+								 modelMapper.map(todoDTO, todo); // 更新欄位訊息
+								 // 儲存更新
+								 Todo uptTodo = todoRepository.save(todo);
+								 // 回報
+								 return modelMapper.map(uptTodo, TodoDTO.class);
+							 })
+							 .orElseThrow(() -> new TodoNotFoundException("查無資料"));
 	}
 	
 	// 刪除代辦事項
