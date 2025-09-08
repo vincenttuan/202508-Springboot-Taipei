@@ -20,7 +20,8 @@ public class TodoServiceImpl implements TodoService {
 	
 	@Autowired
 	private ModelMapper modelMapper;
-
+	
+	// 取得所有代辦事項
 	@Override
 	public List<TodoDTO> findAllTodos() {
 		List<Todo> todos = todoRepository.findAll();
@@ -29,19 +30,27 @@ public class TodoServiceImpl implements TodoService {
 									  .toList();
 		return todoDTOs;
 	}
-
+	
+	// 新增代辦事項
 	@Override
 	public TodoDTO addTodo(TodoDTO todoDTO) {
-		// TODO Auto-generated method stub
-		return null;
+		// 將 TodoDTO 轉 Todo (dto 轉 entity)
+		Todo todo = modelMapper.map(todoDTO, Todo.class);
+		// 儲存
+		Todo savedTodo = todoRepository.save(todo);
+		// 回報結果
+		todoDTO = modelMapper.map(savedTodo, TodoDTO.class);
+		return todoDTO;
 	}
-
+	
+	// 修改代辦事項
 	@Override
 	public TodoDTO uptTodo(TodoDTO todoDTO) throws TodoNotFoundException {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	// 刪除代辦事項
 	@Override
 	public void delTodo(TodoDTO todoDTO) throws TodoNotFoundException {
 		// TODO Auto-generated method stub
