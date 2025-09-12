@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,18 +53,22 @@ public class TodoController {
 	
 	@PutMapping(value = "/{id}", produces = "application/json;charset=utf-8")
 	public ApiResponse<Object> updateTodo(@PathVariable Long id,  @RequestBody TodoDTO todoDTO) {
-		
 		try {
 			todoDTO = todoService.uptTodo(todoDTO);
 		} catch (TodoNotFoundException e) {
 			return new ApiResponse<>(false, "修改失敗", e.getMessage());
 		}
-		
 		return new ApiResponse<>(true, "修改成功", todoDTO);
-		
 	}
 	
-	
-	
+	@DeleteMapping(value = "/{id}", produces = "application/json;charset=utf-8")
+	public ApiResponse<Object> deleteTodo(@PathVariable Long id) {
+		try {
+			todoService.delTodo(id);
+		} catch (TodoNotFoundException e) {
+			return new ApiResponse<>(false, "刪除失敗", e.getMessage());
+		}
+		return new ApiResponse<>(true, "刪除成功", null);
+	}
 	
 }
