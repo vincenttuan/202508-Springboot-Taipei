@@ -54,6 +54,7 @@ public class TodoController {
 	@PutMapping(value = "/{id}", produces = "application/json;charset=utf-8")
 	public ApiResponse<Object> updateTodo(@PathVariable Long id,  @RequestBody TodoDTO todoDTO) {
 		try {
+			todoDTO.setId(id); // 將 id 放到 todoDTO 物件中
 			todoDTO = todoService.uptTodo(todoDTO);
 		} catch (TodoNotFoundException e) {
 			return new ApiResponse<>(false, "修改失敗", e.getMessage());
