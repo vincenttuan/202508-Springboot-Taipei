@@ -7,7 +7,7 @@
  * DELETE  localhost:8080/todolist/{id}  刪除指定代辦事項
  * ------------------------------------------------------
  */
-const BASE_URL = 'localhost:8080/todolist';
+const BASE_URL = 'http://localhost:8080/todolist';
 
 // 取得所有代辦事項
 export const fetchTodos = async() => {
