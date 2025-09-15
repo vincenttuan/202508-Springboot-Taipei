@@ -21,7 +21,7 @@ import { fetchTodos, addTodo, updateTodo, deleteTodo } from './api_services/todo
 
 function App() {
     const [todos, setTodos] = useState([]); // 存放所有代辦事項(給列表用)
-    const [todo, setTodo] = useState(''); // 存放代辦事項(給表單用)
+    const [text, setText] = useState(''); // 存放代辦事項(給表單用)
 
     useEffect(() => {
         // 取得所有代辦事項
@@ -32,21 +32,21 @@ function App() {
 
     // 新增代辦事項
     const handleAdd = async () => {
-        if(!todo) return;
-        const newTodo = {text: todo, completed: false};
+        if(!text) return;
+        const newTodo = {text: text, completed: false};
         const addedTodo = await addTodo(newTodo);
         setTodos([...todos, addedTodo]);
-        setTodo('');
+        setText('');
     }
 
     const handleChange = (e) => {
-        setTodo(e.target.value);
+        setText(e.target.value);
     }
 
     return (
     <div className='container mt-5'>
       <h1 className='text-center mb-4'>My Todo List</h1>
-      <TodoInput todo={todo} handleChange={handleChange} handleClick={handleAdd} />
+      <TodoInput todo={text} handleChange={handleChange} handleClick={handleAdd} />
       <TodoList todos={todos} />
     </div>
   )
