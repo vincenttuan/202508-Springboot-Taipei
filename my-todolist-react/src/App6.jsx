@@ -30,10 +30,23 @@ function App() {
             .catch((error) => console.error('error:', error));
     }, []);
 
+    // 新增代辦事項
+    const handleAdd = async () => {
+        if(!todo) return;
+        const newTodo = {text: todo, completed: false};
+        const addedTodo = await addTodo(newTodo);
+        setTodos([...todos, addedTodo]);
+        setTodo('');
+    }
+
+    const handleChange = (e) => {
+        setTodo(e.target.value);
+    }
 
     return (
     <div className='container mt-5'>
       <h1 className='text-center mb-4'>My Todo List</h1>
+      <TodoInput todo={todo} handleChange={handleChange} handleClick={handleAdd} />
       <TodoList todos={todos} />
     </div>
   )
