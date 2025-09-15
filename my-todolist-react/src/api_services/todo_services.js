@@ -7,7 +7,7 @@
  * DELETE  localhost:8080/todolist/{id}  刪除指定代辦事項
  * ------------------------------------------------------
  */
-const BASE_URL = 'http://localhost:8080/todolist';
+const BASE_URL = 'http://localhost:8080/todolist/';
 
 // 取得所有代辦事項
 export const fetchTodos = async() => {
@@ -37,7 +37,7 @@ export const addTodo = async(todo) => {
 
 // 修改指定代辦事項
 export const updateTodo = async(updateTodo) => {
-    const response = await fetch(`${BASE_URL}/${updateTodo.id}`, {
+    const response = await fetch(`${BASE_URL}${updateTodo.id}`, {
         method: 'PUT',
         headers: {
             'Content-type': 'application/json'
@@ -54,7 +54,7 @@ export const updateTodo = async(updateTodo) => {
 
 // 刪除指定代辦事項
 export const deleteTodo = async(id) => {
-    const response = await fetch(`${BASE_URL}/${id}`, {
+    const response = await fetch(`${BASE_URL}${id}`, {
         method: 'DELETE'
     });
     const result = await response.json();
