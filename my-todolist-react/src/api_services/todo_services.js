@@ -21,7 +21,18 @@ export const fetchTodos = async() => {
 
 // 新增代辦事項
 export const addTodo = async(todo) => {
-
+    const response = await fetch(BASE_URL, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(todo)
+    });
+    const result = await response.json();
+    if(result.success) {
+        return result.data; // 返回新增成功的資料
+    }
+    throw new Error(result.message);
 };
 
 // 修改指定代辦事項
