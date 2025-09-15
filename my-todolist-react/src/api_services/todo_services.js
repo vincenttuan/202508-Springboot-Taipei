@@ -36,13 +36,13 @@ export const addTodo = async(todo) => {
 };
 
 // 修改指定代辦事項
-export const updateTodo = async(updateTodo) => {
-    const response = await fetch(`${BASE_URL}${updateTodo.id}`, {
+export const updateTodo = async(updatedTodo) => {
+    const response = await fetch(`${BASE_URL}${updatedTodo.id}`, {
         method: 'PUT',
         headers: {
             'Content-type': 'application/json'
         },
-        body: JSON.stringify(todo)
+        body: JSON.stringify(updatedTodo)
     });
     const result = await response.json();
     if(result.success) {
