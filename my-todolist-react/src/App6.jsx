@@ -43,11 +43,25 @@ function App() {
         setText(e.target.value);
     }
 
+    // 修改代辦事項
+    const handleUpdate = async(id) => {
+        // 根據 id 找到要變更的 todo
+        const updatedTodo = todos.find((todo) => todo.id === id);
+        // 是否有找到資料
+        if(!updatedTodo) return;
+        // 變更 completed 狀態更新(地端更新)
+        updatedTodo.completed = !updatedTodo.completed;
+        // 調用 updateTodo 方法進行更新(雲端更新)
+        await updateTodo(updatedTodo);
+        // 重新渲染
+        setTodos([...todos])
+    }
+
     return (
     <div className='container mt-5'>
       <h1 className='text-center mb-4'>My Todo List</h1>
       <TodoInput todo={text} handleChange={handleChange} handleClick={handleAdd} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} changeCompleted={handleUpdate} />
     </div>
   )
 
