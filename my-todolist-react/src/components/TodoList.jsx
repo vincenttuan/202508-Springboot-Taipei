@@ -5,7 +5,7 @@ function TodoList({todos, changeCompleted, onDelete}) {
         <ul className="list-group">
         {
             todos.map((todo, index) => (
-                <TodoItem index={index} todo={todo} changeCompleted={changeCompleted} onDelete={onDelete} />
+                <TodoItem key={todo.id} index={index} todo={todo} changeCompleted={changeCompleted} onDelete={onDelete} />
             ))
         }
         </ul>
