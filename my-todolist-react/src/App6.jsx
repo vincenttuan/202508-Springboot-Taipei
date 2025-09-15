@@ -57,11 +57,21 @@ function App() {
         setTodos([...todos])
     }
 
+    // 刪除代辦事項
+    const handleDelete = async (id) => {
+        await deleteTodo(id)
+                .then((data) => {
+                    setTodos(todos.filter((todo) => todo.id !== id));
+                    console.log(data);
+                })
+                .catch((error) => console.error('error:', error));
+    }
+
     return (
     <div className='container mt-5'>
       <h1 className='text-center mb-4'>My Todo List</h1>
       <TodoInput todo={text} handleChange={handleChange} handleClick={handleAdd} />
-      <TodoList todos={todos} changeCompleted={handleUpdate} />
+      <TodoList todos={todos} changeCompleted={handleUpdate} onDelete={handleDelete} />
     </div>
   )
 
