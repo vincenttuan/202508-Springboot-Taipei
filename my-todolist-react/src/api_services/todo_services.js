@@ -58,7 +58,7 @@ export const deleteTodo = async(id) => {
         method: 'DELETE'
     });
     const result = await response.json();
-    if(response.success) {
+    if(result.success) {
         return true;
     }
     throw new Error(result.message);
