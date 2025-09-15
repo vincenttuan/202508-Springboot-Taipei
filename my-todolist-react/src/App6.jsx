@@ -51,10 +51,14 @@ function App() {
         if(!updatedTodo) return;
         // 變更 completed 狀態更新(地端更新)
         updatedTodo.completed = !updatedTodo.completed;
-        // 調用 updateTodo 方法進行更新(雲端更新)
-        await updateTodo(updatedTodo);
-        // 重新渲染
-        setTodos([...todos])
+        try {
+            // 調用 updateTodo 方法進行更新(雲端更新)
+            await updateTodo(updatedTodo);
+            // 重新渲染
+            setTodos([...todos])
+        } catch(error) {
+            console.error('update error:', error);
+        }
     }
 
     // 刪除代辦事項
@@ -62,9 +66,9 @@ function App() {
         await deleteTodo(id)
                 .then((data) => {
                     setTodos(todos.filter((todo) => todo.id !== id));
-                    console.log(data);
+                    //console.log(data);
                 })
-                .catch((error) => console.error('error:', error));
+                .catch((error) => console.error('delete error:', error));
     }
 
     return (
