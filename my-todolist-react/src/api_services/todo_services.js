@@ -37,7 +37,18 @@ export const addTodo = async(todo) => {
 
 // 修改指定代辦事項
 export const updateTodo = async(updateTodo) => {
-
+    const response = await fetch(`${BASE_URL}/${updateTodo.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(todo)
+    });
+    const result = await response.json();
+    if(result.success) {
+        return result.data; // 返回修改成功的資料
+    }
+    throw new Error(result.message);
 };
 
 
