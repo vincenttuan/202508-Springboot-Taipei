@@ -1,5 +1,6 @@
 package com.example.demo.test;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -26,6 +27,11 @@ public class SelectUserTest {
 		if(optUser2.isPresent()) {
 			User user = optUser2.get();
 			System.out.println("user2 => " + user.getId() + "," + user.getUsername() + "," + user.getPassword());
+		}
+		
+		List<User> users = userRepository.findAll();
+		for(User user : users) {
+			System.out.println(user.getId() + "," + user.getUsername() + "," + user.getPassword());
 		}
 		
 	}

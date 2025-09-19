@@ -11,4 +11,5 @@ import com.example.demo.cart.model.entity.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 	// 自訂方法
 	Optional<User> findByUsername(String username);
+	
 }
