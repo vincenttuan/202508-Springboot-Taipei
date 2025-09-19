@@ -30,7 +30,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	Optional<User> findByUsernameNativeSQL(String username);
 	
 	// 使用 JPQL
-	@Query(value = "select u from user u where u.username = :username", nativeQuery = false)
+	@Query(value = "select u from User u where u.username = :username", nativeQuery = false)
 	Optional<User> findByUsernameJPQL(String username);
 	
 	
