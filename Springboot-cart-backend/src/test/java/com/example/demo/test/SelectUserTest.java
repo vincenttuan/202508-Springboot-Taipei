@@ -34,6 +34,10 @@ public class SelectUserTest {
 			System.out.println(user.getId() + "," + user.getUsername() + "," + user.getPassword());
 		}
 		
+		System.out.println("admin 是否存在: " + userRepository.existsByUsername("admin"));
+		System.out.println("john 是否存在: " + userRepository.existsByUsername("john"));
+		
+		
 	}
 	
 }
