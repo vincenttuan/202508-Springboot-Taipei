@@ -26,7 +26,7 @@ public class SelectProductTest {
 		});
 		
 		// 查詢單筆資料
-		Optional<Product> optProduct = productRepository.findById(1L);
+		Optional<Product> optProduct = productRepository.findById(1L); // 1L, 2L, 3L
 		if(optProduct.isPresent()) {
 			Product product = optProduct.get();
 			System.out.println(product.getId() + "\t" + product.getName() + "\t" + product.getPrice());
