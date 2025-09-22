@@ -18,7 +18,7 @@ public class UpdateProductTest {
 	
 	@Test
 	@Transactional // 因為會使用到 JPA 的 @Modifying 方法, 所以要設定 @Transactional
-	@Commit // 防止 rollback
+	@Commit // 防止 rollback (只有在 @Test 下才要加)
 	public void updateProduct() {
 		// 想要修改 id=1 的價格
 		Long id = 1L;
