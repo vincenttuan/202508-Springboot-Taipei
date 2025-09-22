@@ -1,6 +1,7 @@
 package com.example.demo.test;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,16 @@ public class SelectProductTest {
 			System.out.println(product.getId() + "\t" + product.getName() + "\t" + product.getPrice());
 			System.out.println(product.getProductImage().getImageBase64());
 		});
+		
+		// 查詢單筆資料
+		Optional<Product> optProduct = productRepository.findById(1L);
+		if(optProduct.isPresent()) {
+			Product product = optProduct.get();
+			System.out.println(product.getId() + "\t" + product.getName() + "\t" + product.getPrice());
+			System.out.println(product.getProductImage().getImageBase64());
+		} else {
+			System.out.println("無此資料");
+		}
 		
 	}
 	
