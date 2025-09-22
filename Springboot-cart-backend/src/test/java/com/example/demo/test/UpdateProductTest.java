@@ -27,12 +27,14 @@ public class UpdateProductTest {
 		}
 		// 3. 取出 product 物件
 		Product product = optProduct.get();
-		// 4. 修改 price
-		product.setPrice(45);
+		// 4.1 修改 price
+		product.setPrice(200);
+		// 4.2 修改 name
+		product.setName("富士蘋果");
 		// 5. 回存
 		productRepository.save(product);
 		
-		System.out.println("價格更新完畢 !");
+		System.out.println("價格名稱更新完畢 !");
 		
 		
 	}
