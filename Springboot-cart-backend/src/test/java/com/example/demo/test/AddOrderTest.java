@@ -52,18 +52,20 @@ public class AddOrderTest {
 		// 5.配置資料
 		// 訂單主檔 
 		order.setUser(user); // 配置使用者
+		orderRepository.save(order); // 儲存
 				
 		// 訂單細目
 		item1.setOrder(order);
 		item1.setProduct(apple);
 		item1.setQty(10);
+		orderItemRepository.save(item1); // 儲存
 		
 		item2.setOrder(order);
 		item2.setProduct(banana);
 		item2.setQty(20);
+		orderItemRepository.save(item2); // 儲存
 		
-		// 儲存
-		orderRepository.save(order);
+		
 		
 		System.out.println("Order add OK");
 	}
