@@ -5,12 +5,9 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.example.demo.cart.model.entity.Product;
 import com.example.demo.cart.repository.ProductRepository;
-
-import jakarta.transaction.Transactional;
 
 @SpringBootTest
 public class UpdateProductTest {
@@ -27,7 +24,7 @@ public class UpdateProductTest {
 		String name = "青森蘋果";
 		
 		//productRepository.updatePriceAndNameById(id, price, name);
-		int rowcount = productRepository.updatePriceAndNameByIdNative(id, price, name);
+		int rowcount = productRepository.updatePriceAndNameById(id, price, name);
 		if(rowcount > 0) {
 			System.out.println("價格名稱更新完畢 !");
 		} else {
