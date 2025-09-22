@@ -29,7 +29,7 @@ public class Order {
 	private User user;
 	
 	// order 與 order_item 一對多關聯
-	@OneToMany
+	@OneToMany(mappedBy = "order")
 	private List<OrderItem> orderItems;
 	
 	

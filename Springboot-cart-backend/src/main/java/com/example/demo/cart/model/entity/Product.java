@@ -36,7 +36,7 @@ public class Product {
 	private ProductImage productImage;
 	
 	// product 與 order_item 一對多關聯
-	@OneToMany
+	@OneToMany(mappedBy = "product")
 	private List<OrderItem> orderItems;
 	
 }
