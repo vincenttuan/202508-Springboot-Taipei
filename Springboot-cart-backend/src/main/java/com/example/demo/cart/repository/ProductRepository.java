@@ -16,7 +16,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	@Query("update Product p set p.price = :price, p.name = :name where p.id = :id")
 	int updatePriceAndNameById(@Param("id") Long id, @Param("price") Integer price, @Param("name") String name);
 	
-	// 自訂修改(使用 T-SQL)
+	// 自訂修改(使用 T-SQL [nativeQuery = true])
 	@Modifying
 	@Query(value="update product set price = :price, name = :name where id = :id", nativeQuery = true)
 	int updatePriceAndNameByIdNative(@Param("id") Long id, @Param("price") Integer price, @Param("name") String name);
