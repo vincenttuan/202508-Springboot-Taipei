@@ -50,6 +50,9 @@ public class AddOrderTest {
 		OrderItem item2 = new OrderItem();
 		
 		// 5.配置資料
+		// 訂單主檔 
+		order.setUser(user); // 配置使用者
+				
 		// 訂單細目
 		item1.setOrder(order);
 		item1.setProduct(apple);
@@ -59,13 +62,7 @@ public class AddOrderTest {
 		item2.setProduct(banana);
 		item2.setQty(20);
 		
-		// 訂單主檔 
-		order.setUser(user); // 配置使用者
-		order.setOrderItems(List.of(item1, item2));
-		
 		// 儲存
-		orderItemRepository.save(item1);
-		orderItemRepository.save(item2);
 		orderRepository.save(order);
 		
 		System.out.println("Order add OK");
