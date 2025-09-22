@@ -30,7 +30,7 @@ public class Order {
 	
 	// order 與 order_item 一對多關聯
 	@OneToMany
-	private List<OrderItem> items;
+	private List<OrderItem> orderItems;
 	
 	
 }
