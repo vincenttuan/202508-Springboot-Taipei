@@ -65,8 +65,6 @@ public class AddOrderTest {
 		item2.setQty(20);
 		orderItemRepository.save(item2); // 儲存
 		
-		
-		
 		System.out.println("Order add OK");
 	}
 	
