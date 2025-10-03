@@ -4,6 +4,7 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,7 +31,9 @@ public class Order {
 	private User user;
 	
 	// order 與 order_item 一對多關聯
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	// FetchType.EAGER 查找 order 的同時一併查找 orderItem
+	// FetchType.LAZY 查找 order 的不會查找 orderItem
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<OrderItem> orderItems;
 	
 	
