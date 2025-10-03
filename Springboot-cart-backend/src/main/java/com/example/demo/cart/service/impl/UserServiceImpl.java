@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.cart.exception.ProductNotFoundException;
 import com.example.demo.cart.exception.UserNotFoundException;
 import com.example.demo.cart.model.dto.FavoriteProductDTO;
 import com.example.demo.cart.model.dto.FavoriteUserDTO;
@@ -78,10 +79,13 @@ public class UserServiceImpl implements UserService {
 						.map(product -> modelMapper.map(product, FavoriteProductDTO.class)) // 元素一個一個轉換
 						.toList();
 	}
-
+	
+	// 商品關注列表(商品關注那些商品) - 反向查詢
 	@Override
 	public List<FavoriteUserDTO> getFavoriteUsers(Long productId) {
-		// TODO Auto-generated method stub
+		Product product = productRepository.findById(productId).orElseThrow(() -> new ProductNotFoundException("查無商品"));
+		
+		
 		return null;
 	}
 
