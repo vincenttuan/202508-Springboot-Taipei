@@ -24,8 +24,8 @@ public class AddFavorite {
 		// 使用者
 		User user = userRepository.findById(1L).get();
 		// 使用者關注商品 -> 建立與商品之間的關聯關係
-		user.getFavoriteProducts().add(p1);
-		user.getFavoriteProducts().add(p2);
+		user.getFavoriteProducts().add(p1); // 加入關注
+		user.getFavoriteProducts().add(p2); // 加入關注
 		// 保存
 		userRepository.save(user);
 	}
