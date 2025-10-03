@@ -63,10 +63,14 @@ public class UserServiceImpl implements UserService {
 		userDTO = modelMapper.map(user, UserDTO.class);
 		return Optional.of(userDTO);
 	}
-
+	
+	// 用戶關注列表(用戶關注那些商品) - 正向查詢
 	@Override
 	public List<FavoriteProductDTO> getFavoriteProducts(Long userId) {
-		// TODO Auto-generated method stub
+		User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("查無使用者"));
+		
+		
+		
 		return null;
 	}
 
