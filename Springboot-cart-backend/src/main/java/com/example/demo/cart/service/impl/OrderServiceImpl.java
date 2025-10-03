@@ -34,7 +34,9 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Override
 	public List<OrderDTO> findOrdersByUserId(Long userId) {
-		return null; 
+		return orderRepository.findByUserId(userId).stream() // ... order
+				.map(order -> modelMapper.map(order, OrderDTO.class)) // ... orderDTO
+				.toList(); 
 	}
 
 	@Override
