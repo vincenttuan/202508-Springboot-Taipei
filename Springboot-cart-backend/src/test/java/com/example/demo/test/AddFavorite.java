@@ -28,6 +28,8 @@ public class AddFavorite {
 		user.getFavoriteProducts().add(p2); // 加入關注
 		// 保存
 		userRepository.save(user);
+		
+		System.out.println("關注設定完畢!");
 	}
 	
 }
