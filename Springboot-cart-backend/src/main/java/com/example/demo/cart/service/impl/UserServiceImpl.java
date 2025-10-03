@@ -2,6 +2,7 @@ package com.example.demo.cart.service.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import com.example.demo.cart.model.dto.FavoriteProductDTO;
 import com.example.demo.cart.model.dto.FavoriteUserDTO;
 import com.example.demo.cart.model.dto.LoginDTO;
 import com.example.demo.cart.model.dto.UserDTO;
+import com.example.demo.cart.model.entity.Product;
 import com.example.demo.cart.model.entity.User;
 import com.example.demo.cart.repository.ProductRepository;
 import com.example.demo.cart.repository.UserRepository;
@@ -69,10 +71,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<FavoriteProductDTO> getFavoriteProducts(Long userId) {
 		User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("查無使用者"));
-		
-		
-		
-		return null;
+		// 查詢該用戶目前所關注的商品
+		Set<Product> products = user.getFavoriteProducts();
+		// 將 products 集合中的每一個 Product 元素轉 FavoriteProductDTO
+		return products.stream()
+						.map(product -> modelMapper.map(product, FavoriteProductDTO.class)) // 元素一個一個轉換
+						.toList();
 	}
 
 	@Override
