@@ -49,7 +49,7 @@ public class OrderServiceImpl implements OrderService {
 		User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("查無使用者"));
 		
 		// 2. 建立訂單 
-		Order order = new Order();
+		final Order order = new Order();
 		order.setUser(user); // 設定訂單與用戶的關聯
 		
 		// 3. 建立訂單明細列表
@@ -65,9 +65,9 @@ public class OrderServiceImpl implements OrderService {
 		order.setOrderItems(orderItems);
 		
 		// 5. 保存
-		order = orderRepository.save(order);
+		Order savedOrder = orderRepository.save(order);
 		
-		OrderDTO orderDTO = modelMapper.map(order, OrderDTO.class); 
+		OrderDTO orderDTO = modelMapper.map(savedOrder, OrderDTO.class); 
 		return Optional.of(orderDTO);
 	}
 
