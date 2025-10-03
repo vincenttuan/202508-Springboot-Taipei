@@ -46,6 +46,11 @@ public class UserServiceImpl implements UserService {
 			return Optional.empty();
 		}
 		User user = optUser.get();
+		// 判斷密碼
+		if(user.getPassword().equals(loginDTO.getPassword())) { // 比對成功
+			UserDTO userDTO = modelMapper.map(user, UserDTO.class);
+			return Optional.of(userDTO);
+		}
 		return Optional.empty();
 	}
 
