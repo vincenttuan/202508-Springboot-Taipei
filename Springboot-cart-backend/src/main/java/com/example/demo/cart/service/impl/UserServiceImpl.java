@@ -33,14 +33,19 @@ public class UserServiceImpl implements UserService {
 		if(optUser.isEmpty()) {
 			return Optional.empty();
 		}
+		User user = optUser.get();
 		// 利用 modelMapper 將 user 轉 userDTO
-		UserDTO userDTO = modelMapper.map(optUser.get(), UserDTO.class);
+		UserDTO userDTO = modelMapper.map(user, UserDTO.class);
 		return Optional.of(userDTO);
 	}
 
 	@Override
 	public Optional<UserDTO> login(LoginDTO loginDTO) {
-		// TODO Auto-generated method stub
+		Optional<User> optUser = userRepository.findByUsername(loginDTO.getUsername());
+		if(optUser.isEmpty()) {
+			return Optional.empty();
+		}
+		User user = optUser.get();
 		return Optional.empty();
 	}
 
