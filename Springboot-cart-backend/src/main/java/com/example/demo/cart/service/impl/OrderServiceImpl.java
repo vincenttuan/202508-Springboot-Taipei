@@ -7,8 +7,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.cart.exception.UserNotFoundException;
 import com.example.demo.cart.model.dto.OrderDTO;
 import com.example.demo.cart.model.dto.OrderItemDTO;
+import com.example.demo.cart.model.entity.Order;
+import com.example.demo.cart.model.entity.User;
 import com.example.demo.cart.repository.OrderItemRepository;
 import com.example.demo.cart.repository.OrderRepository;
 import com.example.demo.cart.repository.ProductRepository;
@@ -41,7 +44,14 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Optional<OrderDTO> saveOrder(Long userId, List<OrderItemDTO> items) {
-		// TODO Auto-generated method stub
+		// 1. 取得 user
+		User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("查無使用者"));
+		
+		// 2. 建立訂單 
+		Order order = new Order();
+		
+		
+		
 		return Optional.empty();
 	}
 
