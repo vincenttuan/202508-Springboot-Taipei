@@ -1,5 +1,6 @@
 package com.example.demo.test;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -17,6 +18,7 @@ public class AddFavorite {
 	@Autowired
 	ProductRepository productRepository;
 	
+	@Test
 	void add() {
 		// 商品
 		Product p1 = productRepository.findById(1L).get();
