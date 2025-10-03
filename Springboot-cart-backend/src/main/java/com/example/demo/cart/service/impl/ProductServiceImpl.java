@@ -7,8 +7,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.cart.exception.ProductNotFoundException;
 import com.example.demo.cart.model.dto.ProductDTO;
 import com.example.demo.cart.model.entity.Product;
+import com.example.demo.cart.model.entity.ProductImage;
 import com.example.demo.cart.repository.ProductRepository;
 import com.example.demo.cart.service.ProductService;
 
@@ -23,22 +25,36 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public List<ProductDTO> getAllProducts() {
-		List<Product> products = productRepository.findAll();
-		return products.stream()
-						.map(product -> modelMapper.map(product, ProductDTO.class))
-						.toList();
+		return productRepository.findAll()
+								.stream()
+								.map(product -> modelMapper.map(product, ProductDTO.class))
+								.toList();
 	}
 
 	@Override
-	public Optional<ProductDTO> getProductById(Long id) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public Optional<ProductDTO> getProductById(Long productId) {
+		Product product = productRepository.findById(productId).orElseThrow(() -> new ProductNotFoundException("查無商品"));
+		ProductDTO productDTO = modelMapper.map(product, ProductDTO.class);
+		return Optional.of(productDTO);
 	}
 
 	@Override
 	public Optional<ProductDTO> saveProduct(ProductDTO productDTO) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+		// 建立 ProductImage
+		ProductImage productImage = new ProductImage();
+		productImage.setImageBase64(productDTO.getImageBase64());
+		
+		// ProductDTO 轉 Product
+		Product product = modelMapper.map(productDTO, Product.class);
+		product.setProductImage(productImage);
+		
+		// 儲存
+		product = productRepository.save(product);
+		
+		// Product 轉 ProductDTO
+		productDTO = modelMapper.map(product, ProductDTO.class);
+		
+		return Optional.of(productDTO);
 	}
 
 }
