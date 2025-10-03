@@ -56,8 +56,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Optional<UserDTO> saveUser(UserDTO userDTO) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+		// 將 userDTO 轉 user
+		User user = modelMapper.map(userDTO, User.class);
+		user = userRepository.save(user);
+		// 將 user 轉 userDTO 
+		userDTO = modelMapper.map(user, UserDTO.class);
+		return Optional.of(userDTO);
 	}
 
 	@Override
