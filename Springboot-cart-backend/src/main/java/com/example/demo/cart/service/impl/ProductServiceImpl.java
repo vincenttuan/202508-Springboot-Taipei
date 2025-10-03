@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.cart.model.dto.ProductDTO;
+import com.example.demo.cart.model.entity.Product;
 import com.example.demo.cart.repository.ProductRepository;
 import com.example.demo.cart.service.ProductService;
 
@@ -22,8 +23,10 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public List<ProductDTO> getAllProducts() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Product> products = productRepository.findAll();
+		return products.stream()
+						.map(product -> modelMapper.map(product, ProductDTO.class))
+						.toList();
 	}
 
 	@Override
