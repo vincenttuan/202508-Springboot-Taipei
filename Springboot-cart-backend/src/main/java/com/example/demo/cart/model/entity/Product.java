@@ -41,7 +41,7 @@ public class Product {
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private List<OrderItem> orderItems;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy = "favoriteProducts")
 	private Set<User> favoriteUsers;
 	
 }
