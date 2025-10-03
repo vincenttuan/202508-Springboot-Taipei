@@ -92,16 +92,26 @@ public class UserServiceImpl implements UserService {
 					.toList();
 	}
 
+	// 新增商品關注
 	@Override
 	public void addFavoriteProduct(Long userId, Long productId) {
-		// TODO Auto-generated method stub
-		
+		User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("查無使用者"));
+		Product product = productRepository.findById(productId).orElseThrow(() -> new ProductNotFoundException("查無商品"));
+		// 將商品加入到用戶關注清單
+		user.getFavoriteProducts().add(product);
+		// 保存
+		userRepository.save(user);
 	}
 
+	// 移除商品關注
 	@Override
 	public void removeFavoriteProduct(Long userId, Long productId) {
-		// TODO Auto-generated method stub
-		
+		User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("查無使用者"));
+		Product product = productRepository.findById(productId).orElseThrow(() -> new ProductNotFoundException("查無商品"));
+		// 將商品從用戶關注清單中移除
+		user.getFavoriteProducts().remove(product);
+		// 保存
+		userRepository.save(user);
 	}
 
 }
