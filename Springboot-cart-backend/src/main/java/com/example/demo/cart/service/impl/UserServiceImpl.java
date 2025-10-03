@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.cart.exception.UserNotFoundException;
 import com.example.demo.cart.model.dto.FavoriteProductDTO;
 import com.example.demo.cart.model.dto.FavoriteUserDTO;
 import com.example.demo.cart.model.dto.LoginDTO;
