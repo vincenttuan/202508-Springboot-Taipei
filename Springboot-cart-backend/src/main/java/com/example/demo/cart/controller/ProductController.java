@@ -30,11 +30,10 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	@GetMapping("/")
+	@GetMapping(value = {"", "/"})
 	public ResponseEntity<ApiResponse<List<ProductDTO>>> getAllProducts() {
 		return ResponseEntity.ok(new ApiResponse<>(200, "查詢成功", productService.getAllProducts()));
 	}
-	
 	
 	
 }
