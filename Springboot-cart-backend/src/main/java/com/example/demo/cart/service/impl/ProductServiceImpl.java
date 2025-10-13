@@ -33,9 +33,14 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Optional<ProductDTO> getProductById(Long productId) {
-		Product product = productRepository.findById(productId).orElseThrow(() -> new ProductNotFoundException("查無商品"));
-		ProductDTO productDTO = modelMapper.map(product, ProductDTO.class);
-		return Optional.of(productDTO);
+		try {
+			Product product = productRepository.findById(productId).orElseThrow(() -> new ProductNotFoundException("查無商品"));
+			ProductDTO productDTO = modelMapper.map(product, ProductDTO.class);
+			return Optional.of(productDTO);
+		} catch (Exception e) {
+			return Optional.empty();
+		}
+		
 	}
 
 	@Override
