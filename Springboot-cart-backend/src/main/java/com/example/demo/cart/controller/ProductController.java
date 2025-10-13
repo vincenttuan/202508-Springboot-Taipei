@@ -1,11 +1,16 @@
 package com.example.demo.cart.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.cart.model.dto.ProductDTO;
+import com.example.demo.cart.response.ApiResponse;
 import com.example.demo.cart.service.ProductService;
 
 /**
@@ -25,7 +30,10 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	
+	@GetMapping("/")
+	public ResponseEntity<ApiResponse<List<ProductDTO>>> getAllProducts() {
+		return ResponseEntity.ok(new ApiResponse<>(200, "查詢成功", productService.getAllProducts()));
+	}
 	
 	
 	
