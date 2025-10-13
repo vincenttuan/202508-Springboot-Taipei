@@ -18,8 +18,6 @@ import com.example.demo.cart.model.dto.ProductDTO;
 import com.example.demo.cart.response.ApiResponse;
 import com.example.demo.cart.service.ProductService;
 
-import jakarta.annotation.PostConstruct;
-
 /**
  * -------------------------------------------------------------------
  * Servlet-Path: "/products"
