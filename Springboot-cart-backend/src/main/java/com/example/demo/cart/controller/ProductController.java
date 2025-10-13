@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.cart.exception.ProductNotFoundException;
 import com.example.demo.cart.model.dto.ProductDTO;
 import com.example.demo.cart.response.ApiResponse;
 import com.example.demo.cart.service.ProductService;
@@ -39,9 +40,11 @@ public class ProductController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<ApiResponse<ProductDTO>> getProduct(@PathVariable(name = "id") Long productId) {
-		Optional<ProductDTO> optProductDTO = productService.getProductById(productId);
-		if(optProductDTO.isEmpty()) {
-			return ResponseEntity.status(404).body(new ApiResponse<>(404, "查無商品", null));
+		Optional<ProductDTO> optProductDTO = null;
+		try {
+			optProductDTO = productService.getProductById(productId);
+		} catch (ProductNotFoundException e) {
+			return ResponseEntity.status(404).body(new ApiResponse<>(404, e.getMessage(), null));
 		}
 		ProductDTO productDTO = optProductDTO.get();
 		return ResponseEntity.ok(new ApiResponse<>(200, "查詢成功", productDTO));
