@@ -62,7 +62,6 @@ public class AuthController {
 		}
 		loginDTO.setIsLoggedIn(true);
 		return ResponseEntity.ok(new ApiResponse<>(200, "仍在登入狀態", loginDTO));
-		
 	}
 	
 }
