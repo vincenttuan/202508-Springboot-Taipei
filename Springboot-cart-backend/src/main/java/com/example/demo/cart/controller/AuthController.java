@@ -61,6 +61,9 @@ public class AuthController {
 			loginDTO.setIsLoggedIn(false);
 			return ResponseEntity.status(404).body(new ApiResponse<>(404, "無登入資料", loginDTO));
 		}
+		UserDTO userDTO = (UserDTO)session.getAttribute("userDTO");
+		loginDTO.setUsername(userDTO.getUsername());
+		loginDTO.setPassword("******");
 		loginDTO.setIsLoggedIn(true);
 		return ResponseEntity.ok(new ApiResponse<>(200, "仍在登入狀態", loginDTO));
 	}
