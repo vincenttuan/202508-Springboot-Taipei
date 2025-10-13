@@ -42,6 +42,7 @@ public class AuthController {
 			return ResponseEntity.status(404).body(new ApiResponse<>(404, "登入失敗", null));
 		}
 		UserDTO userDTO = optUserDTO.get();
+		userDTO.setPassword("******");
 		// 存入到 HttpSession 中
 		session.setAttribute("userDTO", userDTO);
 		//System.out.println("jsessionid:" + session.getId());
