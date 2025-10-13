@@ -35,7 +35,7 @@ public class AuthController {
 	private UserService userService;
 	
 	@PostMapping("/login")
-	public ResponseEntity<ApiResponse<LoginDTO>> login(@RequestBody LoginDTO loginDTO, HttpSession session) {
+	public ResponseEntity<ApiResponse<UserDTO>> login(@RequestBody LoginDTO loginDTO, HttpSession session) {
 		// login 比對判斷
 		Optional<UserDTO> optUserDTO = userService.login(loginDTO);
 		if(optUserDTO.isEmpty()) {
@@ -44,7 +44,7 @@ public class AuthController {
 		UserDTO userDTO = optUserDTO.get();
 		// 存入到 HttpSession 中
 		session.setAttribute("userDTO", userDTO);
-		return ResponseEntity.ok(new ApiResponse<>(200, "登入成功", loginDTO));
+		return ResponseEntity.ok(new ApiResponse<>(200, "登入成功", userDTO));
 	}
 	
 	@GetMapping("/logout")
