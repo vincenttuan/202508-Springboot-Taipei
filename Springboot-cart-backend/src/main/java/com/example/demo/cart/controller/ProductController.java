@@ -1,11 +1,13 @@
 package com.example.demo.cart.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,6 +37,15 @@ public class ProductController {
 		return ResponseEntity.ok(new ApiResponse<>(200, "查詢成功", productService.getAllProducts()));
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<ApiResponse<ProductDTO>> getProduct(@PathVariable(name = "id") Long productId) {
+		Optional<ProductDTO> optProductDTO = productService.getProductById(productId);
+		if(optProductDTO.isEmpty()) {
+			return ResponseEntity.status(404).body(new ApiResponse<>(404, "查無商品", null));
+		}
+		ProductDTO productDTO = optProductDTO.get();
+		return ResponseEntity.ok(new ApiResponse<>(200, "查詢成功", productDTO));
+	}
 	
 }
 
