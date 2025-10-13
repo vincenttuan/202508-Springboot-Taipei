@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,7 +45,12 @@ public class AuthController {
 		// 存入到 HttpSession 中
 		session.setAttribute("userDTO", userDTO);
 		return ResponseEntity.ok(new ApiResponse<>(200, "登入成功", loginDTO));
-		
+	}
+	
+	@GetMapping("/logout")
+	public ResponseEntity<ApiResponse<Void>> logout(HttpSession session) {
+		session.invalidate();
+		return ResponseEntity.ok(new ApiResponse<>(200, "登出成功", null));
 	}
 }
 
