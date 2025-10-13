@@ -44,7 +44,7 @@ public class AuthController {
 		UserDTO userDTO = optUserDTO.get();
 		// 存入到 HttpSession 中
 		session.setAttribute("userDTO", userDTO);
-		System.out.println("jsessionid:" + session.getId());
+		//System.out.println("jsessionid:" + session.getId());
 		return ResponseEntity.ok(new ApiResponse<>(200, "登入成功", userDTO));
 	}
 	
