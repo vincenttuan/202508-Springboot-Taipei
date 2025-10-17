@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.cart.aop.CheckUserSession;
 import com.example.demo.cart.model.dto.LoginDTO;
 import com.example.demo.cart.model.dto.OrderDTO;
 import com.example.demo.cart.model.dto.OrderItemDTO;
@@ -37,22 +38,16 @@ public class OrderController {
 	private OrderService orderService;
 	
 	@GetMapping(value = {"", "/"})
+	@CheckUserSession
 	public ResponseEntity<ApiResponse<List<OrderDTO>>> getAllOrders(HttpSession session) {
-		// 檢查是否有登入 ?
-		if(session.getAttribute("userDTO") == null) {
-			return ResponseEntity.status(404).body(new ApiResponse<>(404, "無登入資料", null));
-		}
 		UserDTO userDTO = (UserDTO)session.getAttribute("userDTO");
 		List<OrderDTO> orderDTOs = orderService.findOrdersByUserId(userDTO.getId());
 		return ResponseEntity.ok(new ApiResponse<>(200, "查詢成功", orderDTOs));
 	}
 	
 	@PostMapping("/checkout")
+	@CheckUserSession
 	public ResponseEntity<ApiResponse<OrderDTO>> createOrder(@RequestBody List<OrderItemDTO> items, HttpSession session) {
-		// 檢查是否有登入 ?
-		if(session.getAttribute("userDTO") == null) {
-			return ResponseEntity.status(404).body(new ApiResponse<>(404, "無登入資料", null));
-		}
 		UserDTO userDTO = (UserDTO)session.getAttribute("userDTO");
 		Optional<OrderDTO> optOrderDTO = orderService.saveOrder(userDTO.getId(), items);
 		if(optOrderDTO.isEmpty()) {
