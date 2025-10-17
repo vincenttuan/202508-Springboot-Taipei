@@ -46,7 +46,7 @@ public class FavoriteController {
 	}
 	
 	// 加入關注
-	@PostMapping("/productId")
+	@PostMapping("/{productId}")
 	@CheckUserSession
 	public ResponseEntity<ApiResponse<String>> addFavorite(@PathVariable Long productId, HttpSession session) {
 		Long userId = ((UserDTO)session.getAttribute("userDTO")).getId();
@@ -55,7 +55,7 @@ public class FavoriteController {
 	}
 	
 	// 取消關注
-	@DeleteMapping("/productId")
+	@DeleteMapping("/{productId}")
 	@CheckUserSession
 	public ResponseEntity<ApiResponse<String>> removeFavorite(@PathVariable Long productId, HttpSession session) {
 		Long userId = ((UserDTO)session.getAttribute("userDTO")).getId();
