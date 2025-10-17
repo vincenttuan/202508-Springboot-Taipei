@@ -25,7 +25,7 @@ import jakarta.servlet.http.HttpSession;
  * -------------------------------------------------------------------
  * Servlet-Path: "/orders"
  * -------------------------------------------------------------------
- * GET  "/"         查詢該用戶(已登入)的所有商品(多筆) 範例: /orders/
+ * GET  "/"         查詢該用戶(已登入)的所有訂單(多筆) 範例: /orders/
  * POST "/checkout" 該用戶(已登入)進行結帳          範例: /checkout
 */
 @RestController
