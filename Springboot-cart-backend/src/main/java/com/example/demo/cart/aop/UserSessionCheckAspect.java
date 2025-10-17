@@ -1,9 +1,13 @@
 package com.example.demo.cart.aop;
 
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.example.demo.cart.model.dto.UserDTO;
+
+import jakarta.servlet.UnavailableException;
 import jakarta.servlet.http.HttpSession;
 
 /**
@@ -33,5 +37,18 @@ public class UserSessionCheckAspect {
 	@Autowired
 	private HttpSession session; // 自動注入 HttpSession
 	
+	@Before("@annotation(com.example.demo.cart.aop.CheckUserSession)")
+	public void checkUserSession() throws UnavailableException {
+		// 取得 user 資訊
+		if(session.getAttribute("userDTO") == null) {
+			// 未登入, 拋出未授權例外
+			throw new UnavailableException("未登入或登入過期");
+		}
+	}
 	
 }
+
+
+
+
+
