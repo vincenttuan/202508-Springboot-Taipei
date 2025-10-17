@@ -10,7 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.example.cart.response.ApiResponse;
+import com.example.demo.cart.exception.ProductNotFoundException;
+import com.example.demo.cart.exception.UnauthorizedException;
+import com.example.demo.cart.exception.UserNotFoundException;
+import com.example.demo.cart.response.ApiResponse;
 
 @ControllerAdvice // 可以用來處理全域的例外
 public class GlobalExceptionHandler {
@@ -52,7 +55,7 @@ public class GlobalExceptionHandler {
 	        status = HttpStatus.INTERNAL_SERVER_ERROR;
 	    }
 
-	    ApiResponse<String> response = ApiResponse.error(status.value(), message);
+	    ApiResponse<String> response = new ApiResponse<>(status.value(), message, null);
 	    return ResponseEntity.status(status).body(response);
 	}
 	
