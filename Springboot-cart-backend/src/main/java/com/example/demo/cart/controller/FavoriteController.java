@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.cart.aop.CheckUserSession;
 import com.example.demo.cart.model.dto.FavoriteProductDTO;
+import com.example.demo.cart.model.dto.FavoriteUserDTO;
 import com.example.demo.cart.model.dto.UserDTO;
 import com.example.demo.cart.response.ApiResponse;
 import com.example.demo.cart.service.UserService;
@@ -35,7 +37,12 @@ public class FavoriteController {
 	}
 	
 	// 獲取商品被那些用戶關注清單
-	
+	@GetMapping("/product/{productId}")
+	@CheckUserSession
+	public ResponseEntity<ApiResponse<List<FavoriteUserDTO>>> getFavoriteUsers(@PathVariable Long productId) {
+		List<FavoriteUserDTO> favoriteUserDTOs = userService.getFavoriteUsers(productId);
+		return ResponseEntity.ok(new ApiResponse<>(200, "獲取商品被那些用戶關注清單", favoriteUserDTOs));
+	}
 	// 加入關注
 	
 	// 取消關注
