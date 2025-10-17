@@ -12,6 +12,7 @@ import com.example.demo.cart.model.dto.OrderDTO;
 import com.example.demo.cart.model.dto.OrderItemDTO;
 import com.example.demo.cart.model.entity.Order;
 import com.example.demo.cart.model.entity.OrderItem;
+import com.example.demo.cart.model.entity.Product;
 import com.example.demo.cart.model.entity.User;
 import com.example.demo.cart.repository.OrderItemRepository;
 import com.example.demo.cart.repository.OrderRepository;
@@ -57,6 +58,12 @@ public class OrderServiceImpl implements OrderService {
 				.map(item -> {
 					OrderItem orderItem = modelMapper.map(item, OrderItem.class);
 					orderItem.setOrder(order); // 設定 item 與 order 的關係
+					
+					// 尋找每一筆訂單的商品
+					Long productId = orderItem.getProduct().getId();
+					Product product = productRepository.findById(productId).get();
+					orderItem.setProduct(product); // 將商品實體配置到 orderItem
+					
 					return orderItem;
 				})
 				.toList();
