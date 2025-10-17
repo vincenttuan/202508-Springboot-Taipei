@@ -67,7 +67,8 @@ public class OrderServiceImpl implements OrderService {
 		// 5. 保存
 		Order savedOrder = orderRepository.save(order);
 		
-		OrderDTO orderDTO = modelMapper.map(savedOrder, OrderDTO.class); 
+		OrderDTO orderDTO = modelMapper.map(savedOrder, OrderDTO.class);
+		
 		return Optional.of(orderDTO);
 	}
 
