@@ -50,9 +50,9 @@ function App() {
   // 處理登出邏輯
   const handleLogout = async() => {
     try {
-      const apiResponse = await logout(); // 使用登出服務方法
+      const data = await logout(); // 使用登出服務方法
       setIsLoggedIn(false);
-      alert(apiResponse.data);
+      alert(data.message);
       window.location.href = '/';
     } catch (error) {
       alert(error);

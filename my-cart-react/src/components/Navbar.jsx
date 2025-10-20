@@ -26,7 +26,7 @@ function Navbar({isLoggedIn, onLogout}) {
             </li>
             
             <li>
-                <button className="navbar-button">
+                <button className="navbar-button" onClick={onLogout}>
                     登出
                 </button>
             </li>
