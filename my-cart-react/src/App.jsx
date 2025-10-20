@@ -33,10 +33,22 @@ function App() {
     }
   };
 
+  // 處理登出邏輯
+  const handleLogout = async() => {
+    try {
+      const apiResponse = await logout(); // 使用登出服務方法
+      setIsLoggedIn(false);
+      alert(apiResponse.data);
+      window.location.href = '/';
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   return (
     <Router>
       {/* 導航列-位於最上方 */}
-      <Navbar />
+      <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
       {/* 主要內容區塊-位於中間部分 */}
       <div className="content">
         <Routes>
