@@ -28,6 +28,7 @@ function App() {
         alert("登入失敗");
       }
     } catch(e) {
+      alert(e);
       console.error("登入錯誤:", e);
     }
   };
@@ -43,7 +44,7 @@ function App() {
           <Route path="/" element={<Home />} />
           {/* 登入路由 LoginPage 組件 */}
           <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
-
+..
         </Routes>
       </div>
       {/* 頁尾-位於最下方 */}

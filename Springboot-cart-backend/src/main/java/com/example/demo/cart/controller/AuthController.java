@@ -39,7 +39,7 @@ public class AuthController {
 		// login 比對判斷
 		Optional<UserDTO> optUserDTO = userService.login(loginDTO);
 		if(optUserDTO.isEmpty()) {
-			return ResponseEntity.status(404).body(new ApiResponse<>(404, "登入失敗", null));
+			return ResponseEntity.status(403).body(new ApiResponse<>(403, "登入失敗", null));
 		}
 		UserDTO userDTO = optUserDTO.get();
 		userDTO.setPassword("******");
