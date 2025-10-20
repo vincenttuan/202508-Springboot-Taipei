@@ -87,30 +87,31 @@ function Products({ addToCart, isLoggedIn }) {
 
   return (
     <div className="products-container">
-      <div className="add-product-form">
-        <h2>新增商品</h2>
-        <input
-          type="text"
-          placeholder="商品名稱"
-          value={newProductName}
-          onChange={(e) => setNewProductName(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="價格"
-          value={newProductPrice}
-          onChange={(e) => setNewProductPrice(e.target.value)}
-        />
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageUpload}
-        />
+      
         {isLoggedIn && (
-          <button onClick={handleAddProduct} >新增商品</button>
+          <div className="add-product-form">
+            <h2>新增商品</h2>
+            <input
+              type="text"
+              placeholder="商品名稱"
+              value={newProductName}
+              onChange={(e) => setNewProductName(e.target.value)}
+            />
+            <input
+              type="number"
+              placeholder="價格"
+              value={newProductPrice}
+              onChange={(e) => setNewProductPrice(e.target.value)}
+            />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+            />
+            <button onClick={handleAddProduct} >新增商品</button>
+          </div>  
         )}
-        
-      </div>
+      
       <div className="product-list">
         <h1>商品列表</h1>
         {products.length === 0 ? (
