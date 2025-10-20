@@ -60,7 +60,7 @@ public class AuthController {
 		LoginDTO loginDTO = new LoginDTO();
 		if(session.getAttribute("userDTO") == null) {
 			loginDTO.setIsLoggedIn(false);
-			return ResponseEntity.status(404).body(new ApiResponse<>(404, "無登入資料", loginDTO));
+			return ResponseEntity.ok(new ApiResponse<>(404, "無登入資料", loginDTO));
 		}
 		UserDTO userDTO = (UserDTO)session.getAttribute("userDTO");
 		loginDTO.setUsername(userDTO.getUsername());
