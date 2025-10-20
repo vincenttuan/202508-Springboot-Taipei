@@ -14,6 +14,8 @@ import LoginPage from "./pages/LoginPage";
 import { checkLoginStatus, login, logout } from "./services/authService";
 // 商品相關
 import Products from "./pages/Products";
+// 購物車相關
+import Cart from "./pages/Cart";
 
 
 function App() {
@@ -96,6 +98,9 @@ function App() {
 
           {/* 商品路由 Product 組件 */}
           <Route path="/products" element={<Products addToCart={addToCart} isLoggedIn={isLoggedIn} />} />
+          
+          {/* 購物車路由 Cart 組件 */}
+          <Route path="/cart" element={<Cart cartItems={cartItems} removeFromCart={removeFromCart} clearCart={clearCart} isLoggedIn={isLoggedIn} />} />
           
           {/* 登入路由 LoginPage 組件 */}
           <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
