@@ -12,6 +12,9 @@ import Footer from "./components/Footer";
 // 登入相關
 import LoginPage from "./pages/LoginPage";
 import { checkLoginStatus, login, logout } from "./services/authService";
+// 商品相關
+import Products from "./pages/Products";
+
 
 function App() {
   // 登入狀態
@@ -59,6 +62,11 @@ function App() {
     }
   };
 
+  // 加入購物車
+  const addToCart = (product) => {
+    console.log(product);
+  }
+
   return (
     <Router>
       {/* 導航列-位於最上方 */}
@@ -68,6 +76,10 @@ function App() {
         <Routes>
           {/* 首頁路由 Home 組件 */}
           <Route path="/" element={<Home />} />
+
+          {/* 商品路由 Product 組件 */}
+          <Route path="/" element={<Products addToCart={addToCart} isLoggedIn={isLoggedIn} />} />
+          
           {/* 登入路由 LoginPage 組件 */}
           <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
 ..
