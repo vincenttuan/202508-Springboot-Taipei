@@ -19,6 +19,8 @@ import Products from "./pages/Products";
 function App() {
   // 登入狀態
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // 購物車資料
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     const initializeLoginStatus = async () => {
@@ -64,7 +66,12 @@ function App() {
 
   // 加入購物車
   const addToCart = (product) => {
+    const item = {
+      product: product,
+      qty: 1
+    };
     console.log(product);
+    setCartItems([...cartItems, item]);
   }
 
   return (
@@ -78,7 +85,7 @@ function App() {
           <Route path="/" element={<Home />} />
 
           {/* 商品路由 Product 組件 */}
-          <Route path="/" element={<Products addToCart={addToCart} isLoggedIn={isLoggedIn} />} />
+          <Route path="/products" element={<Products addToCart={addToCart} isLoggedIn={isLoggedIn} />} />
           
           {/* 登入路由 LoginPage 組件 */}
           <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
