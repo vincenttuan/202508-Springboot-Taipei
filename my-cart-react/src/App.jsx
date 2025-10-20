@@ -17,6 +17,20 @@ function App() {
   // 登入狀態
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  useEffect(() => {
+    const initializeLoginStatus = async () => {
+      try {
+        const apiResponse = await checkLoginStatus(); // 使用判斷是否已登入服務方法
+        setIsLoggedIn(apiResponse.data.isLoggedIn);
+      } catch (error) {
+        console.error("無法檢查登入狀態:", error);
+        alert("無法連接到伺服器，請檢查網路連線或伺服器狀態。");
+      }
+    };
+
+    initializeLoginStatus();
+  }, []);
+
   // 處理登入邏輯
   const handleLogin = async (username, password) => {
     try {
