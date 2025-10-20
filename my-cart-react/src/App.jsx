@@ -74,6 +74,16 @@ function App() {
     setCartItems([...cartItems, item]);
   }
 
+  // 移除購物車項目
+  const removeFromCart = (indexToRemove) => {
+    setCartItems(cartItems.filter((_, index) => index !== indexToRemove));
+  };
+
+  // 清除購物車
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   return (
     <Router>
       {/* 導航列-位於最上方 */}
