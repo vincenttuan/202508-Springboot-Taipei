@@ -35,6 +35,9 @@ function Checkout() {
       {!loading && orderHistory.length > 0 && (
         <ul className="order-list">
           {orderHistory.map((order, index) => {
+            // 在 console 印出每筆訂單的資料
+            console.log("order:", order);
+            
             // 計算每筆訂單的總價
             const totalAmount = order.orderItems.reduce(
               (total, item) => total + item.product.price, 0
