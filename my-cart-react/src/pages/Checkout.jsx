@@ -36,7 +36,7 @@ function Checkout() {
         <ul className="order-list">
           {orderHistory.map((order, index) => {
             // 計算每筆訂單的總價
-            const totalAmount = order.items.reduce(
+            const totalAmount = order.orderItems.reduce(
               (total, item) => total + item.product.price, 0
             );
 
@@ -46,7 +46,7 @@ function Checkout() {
                   訂單 #{index + 1} (訂單 ID: {order.orderUUID}, 總價: ${totalAmount})
                 </h3>
                 <ul className="order-items-list">
-                  {order.items.map((item, itemIndex) => (
+                  {order.orderItems.map((item, itemIndex) => (
                     <li key={itemIndex} className="order-item-detail">
                       <img src={item.product.imageBase64} alt={item.product.name} width="100" valign="middle" /> {item.product.name} - ${item.product.price} - 數量: {item.quantity}
                     </li>
