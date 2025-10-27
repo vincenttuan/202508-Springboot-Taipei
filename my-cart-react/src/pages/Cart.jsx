@@ -36,7 +36,7 @@ function Cart({ cartItems, removeFromCart, clearCart, isLoggedIn }) {
             {cartItems.map((item, index) => (
               <li key={index} className="cart-item">
                 <span>
-                  {item.product.name} - ${item.product.price} - 數量: {item.quantity}
+                  {item.product.name} - ${item.product.price} - 數量: {item.qty}
                 </span>
                 <button
                   className="remove-button"
