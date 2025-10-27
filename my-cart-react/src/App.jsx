@@ -16,7 +16,8 @@ import { checkLoginStatus, login, logout } from "./services/authService";
 import Products from "./pages/Products";
 // 購物車相關
 import Cart from "./pages/Cart";
-
+// 結帳相關
+import Checkout from "./pages/Checkout";
 
 function App() {
   // 登入狀態
@@ -101,7 +102,10 @@ function App() {
           
           {/* 購物車路由 Cart 組件 */}
           <Route path="/cart" element={<Cart cartItems={cartItems} removeFromCart={removeFromCart} clearCart={clearCart} isLoggedIn={isLoggedIn} />} />
-           
+
+          {/* 結帳路由 Checkout 組件 */}
+          <Route path="/checkout" element={<Checkout />} />
+
           {/* 登入路由 LoginPage 組件 */}
           <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
 ..
