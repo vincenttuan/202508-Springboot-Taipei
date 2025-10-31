@@ -101,7 +101,7 @@ public class ConsoleTest {
      * 
      * 回應格式範例：
      * {
-     *   "model": "qwen:0.5b-chat",
+     *   "model": "qwen2.5:3b",
      *   "response": "Java 是一種物件導向的程式語言...",
      *   "done": true
      * }
