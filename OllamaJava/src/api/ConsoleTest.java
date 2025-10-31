@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 範例名稱：OllamaGenerateExample（使用 OkHttp3 版本）
@@ -52,7 +53,12 @@ public class ConsoleTest {
             //---------------------------------------------------------
             // 2. 建立 OkHttpClient 實例
             //---------------------------------------------------------
-            OkHttpClient client = new OkHttpClient();
+            //OkHttpClient client = new OkHttpClient();
+            OkHttpClient client = new OkHttpClient.Builder()
+            		.connectTimeout(60, TimeUnit.SECONDS)
+            		.readTimeout(60, TimeUnit.SECONDS)
+            		.writeTimeout(60, TimeUnit.SECONDS)
+            		.build();
 
             //---------------------------------------------------------
             // 3. 建立 RequestBody（將 JSON 字串包裝成請求主體）
