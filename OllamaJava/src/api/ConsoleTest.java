@@ -15,7 +15,7 @@ import java.io.IOException;
  *  呼叫 /api/generate 端點以生成文字回應結果。
  *
  *  對應的 curl 範例如下：
- *  curl -X POST http://192.168.30.121:11434/api/generate \
+ *  curl -X POST http://localhost:11434/api/generate \
  *   -H "Content-Type: application/json" \
  *   -d "{\"model\":\"qwen:0.5b-chat\",\"prompt\":\"請用中文介紹 Java 程式語言\",\"stream\":false}"
  *
