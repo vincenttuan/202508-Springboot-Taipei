@@ -41,7 +41,7 @@ public class ConsoleTest {
             //---------------------------------------------------------
             String jsonBody = """
                 {
-                    "model": "qwen:0.5b-chat",
+                    "model": "qwen2.5:3b",
                     "prompt": "請用中文介紹 Java 程式語言, 並寫出 HelloWorld 程式",
                     "stream": false
                 }
