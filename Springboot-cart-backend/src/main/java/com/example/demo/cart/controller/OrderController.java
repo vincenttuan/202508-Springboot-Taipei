@@ -31,7 +31,7 @@ import jakarta.servlet.http.HttpSession;
 */
 @RestController
 @RequestMapping("/orders")
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:80"}, allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:5173", "http://localhost"}, allowCredentials = "true")
 public class OrderController {
 	
 	@Autowired
