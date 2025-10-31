@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Springboot/src/main/java"/>
+	<classpathentry kind="src" path="Springboot/src/test/java"/>
+	<classpathentry kind="src" path="Springboot-cart-backend/src/main/java"/>
+	<classpathentry kind="src" path="Springboot-cart-backend/src/test/java"/>
+	<classpathentry kind="src" path="Springboot-cart-frontend/src/main/java"/>
+	<classpathentry kind="src" path="Springboot-cart-frontend/src/test/java"/>
+	<classpathentry kind="src" path="Springboot-todolist/src/main/java"/>
+	<classpathentry kind="src" path="Springboot-todolist/src/test/java"/>
+	<classpathentry kind="lib" path="Springboot-cart-backend/target/Springboot-cart-backend-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="Springboot-cart-frontend/target/Springboot-cart-frontend-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="output" path="Springboot/target/classes"/>
+</classpath>
